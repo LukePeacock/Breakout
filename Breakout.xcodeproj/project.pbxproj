@@ -200,6 +200,7 @@
 		A36A09032386F4F70016AE48 /* text_shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = text_shader.vs; sourceTree = "<group>"; };
 		A36A09042386F5060016AE48 /* text_shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = text_shader.frag; sourceTree = "<group>"; };
 		A36A09082386F6EB0016AE48 /* OCRAEXT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = OCRAEXT.TTF; sourceTree = "<group>"; };
+		A36A090B238702A00016AE48 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +239,7 @@
 		A36A086D2385D9AD0016AE48 /* Breakout */ = {
 			isa = PBXGroup;
 			children = (
+				A36A090B238702A00016AE48 /* README.md */,
 				A36A087D2385DAE60016AE48 /* glad.c */,
 				A36A087C2385DA8C0016AE48 /* src */,
 			);
