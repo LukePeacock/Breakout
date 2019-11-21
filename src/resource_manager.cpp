@@ -116,14 +116,6 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alp
     unsigned char *data = stbi_load(file, &width, &height, &nrComponents, 0);
     if (data)
     {
-        GLenum format = GL_RGB;
-        if (nrComponents == 1)
-            format = GL_RED;
-        else if (nrComponents == 3)
-            format = GL_RGB;
-        else if (nrComponents == 4)
-            format = GL_RGBA;
-
         texture.Generate(width, height, data);
         stbi_image_free(data);
     }

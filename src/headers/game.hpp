@@ -60,7 +60,7 @@ public:
     Game(GLuint width, GLuint height);
     ~Game();
     // Initialize game state (load all shaders/textures/levels)
-    void Init();
+    void Init(int width, int height);
     // GameLoop
     void ProcessInput(GLfloat dt);
     void Update(GLfloat dt);

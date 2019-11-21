@@ -12,6 +12,7 @@
 #include <game.hpp>
 #include <resource_manager.hpp>
 
+
 // GLFW function declerations
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
@@ -20,7 +21,9 @@ const GLuint SCREEN_WIDTH = 800;
 // The height of the screen
 const GLuint SCREEN_HEIGHT = 600;
 
+
 Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
+
 
 int main(int argc, char *argv[])
 {
@@ -44,6 +47,7 @@ int main(int argc, char *argv[])
         glfwTerminate();
         return -1;
     }
+    
     glfwMakeContextCurrent(window);
     
     // load all OpenGL function pointers using GLAD
@@ -56,15 +60,18 @@ int main(int argc, char *argv[])
    
 
     glfwSetKeyCallback(window, key_callback);
-
     // OpenGL configuration
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     glEnable(GL_CULL_FACE);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+    //glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_FALSE);
+    
+    
     // Initialize game
-    Breakout.Init();
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+    Breakout.Init(width, height);
 
     // DeltaTime variables
     GLfloat deltaTime = 0.0f;

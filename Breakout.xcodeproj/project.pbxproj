@@ -36,6 +36,9 @@
 		A36A08CA2386B1D30016AE48 /* particle.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08C92386B1CC0016AE48 /* particle.png */; };
 		A36A08CD2386B20E0016AE48 /* particle_shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08CB2386B1E50016AE48 /* particle_shader.vs */; };
 		A36A08CE2386B2110016AE48 /* particle_shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08CC2386B1F90016AE48 /* particle_shader.frag */; };
+		A36A08D12386B53E0016AE48 /* post_processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A08CF2386B53E0016AE48 /* post_processor.cpp */; };
+		A36A08D42386B6930016AE48 /* post_processing.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08D22386B6720016AE48 /* post_processing.vs */; };
+		A36A08D52386B6960016AE48 /* post_processing.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08D32386B6860016AE48 /* post_processing.frag */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +48,8 @@
 			dstPath = shaders;
 			dstSubfolderSpec = 7;
 			files = (
+				A36A08D52386B6960016AE48 /* post_processing.frag in CopyFiles */,
+				A36A08D42386B6930016AE48 /* post_processing.vs in CopyFiles */,
 				A36A08CE2386B2110016AE48 /* particle_shader.frag in CopyFiles */,
 				A36A08CD2386B20E0016AE48 /* particle_shader.vs in CopyFiles */,
 				A36A08A1238696A50016AE48 /* sprite_shader.frag in CopyFiles */,
@@ -123,6 +128,10 @@
 		A36A08C92386B1CC0016AE48 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
 		A36A08CB2386B1E50016AE48 /* particle_shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = particle_shader.vs; sourceTree = "<group>"; };
 		A36A08CC2386B1F90016AE48 /* particle_shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = particle_shader.frag; sourceTree = "<group>"; };
+		A36A08CF2386B53E0016AE48 /* post_processor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = post_processor.cpp; path = src/post_processor.cpp; sourceTree = SOURCE_ROOT; };
+		A36A08D02386B53E0016AE48 /* post_processor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = post_processor.hpp; path = src/headers/post_processor.hpp; sourceTree = SOURCE_ROOT; };
+		A36A08D22386B6720016AE48 /* post_processing.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = post_processing.vs; sourceTree = "<group>"; };
+		A36A08D32386B6860016AE48 /* post_processing.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = post_processing.frag; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +202,7 @@
 				A36A08A72386A35A0016AE48 /* game_level.cpp */,
 				A36A08C32386AC090016AE48 /* ball_object.cpp */,
 				A36A08C62386B17D0016AE48 /* particle_generator.cpp */,
+				A36A08CF2386B53E0016AE48 /* post_processor.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -200,6 +210,7 @@
 		A36A087F2385DBF20016AE48 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				A36A08D02386B53E0016AE48 /* post_processor.hpp */,
 				A36A08C72386B17D0016AE48 /* particle_generator.hpp */,
 				A36A08C42386AC090016AE48 /* ball_object.hpp */,
 				A36A08A82386A35A0016AE48 /* game_level.hpp */,
@@ -222,6 +233,8 @@
 				A36A089E238696450016AE48 /* sprite_shader.frag */,
 				A36A08CB2386B1E50016AE48 /* particle_shader.vs */,
 				A36A08CC2386B1F90016AE48 /* particle_shader.frag */,
+				A36A08D22386B6720016AE48 /* post_processing.vs */,
+				A36A08D32386B6860016AE48 /* post_processing.frag */,
 			);
 			name = shaders;
 			path = src/shaders;
@@ -316,6 +329,7 @@
 				A36A08C82386B17D0016AE48 /* particle_generator.cpp in Sources */,
 				A36A08A62386A3210016AE48 /* game_object.cpp in Sources */,
 				A36A08912385DD6F0016AE48 /* shader.cpp in Sources */,
+				A36A08D12386B53E0016AE48 /* post_processor.cpp in Sources */,
 				A36A089A238695630016AE48 /* sprite_renderer.cpp in Sources */,
 				A36A086F2385D9AD0016AE48 /* main.cpp in Sources */,
 				A36A087E2385DAE60016AE48 /* glad.c in Sources */,
