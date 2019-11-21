@@ -33,7 +33,7 @@ For OSX, you will also need to link the following libraries:
 
 Header search paths will also need updating to resolve the headers for `glm`,and `freetype`, and `glad` based on how you have them installed, `GLFW` headers will be found at `usr/local/include` (as will any other system headers). Then you will also need to provide paths for the project headers at `~/src/headers`.
 
-Any other depency issues should be resolvable by a google search, or send me an email over on [my site](lukepeacock.github.io/contact) 
+Any other depency issues should be resolvable by a google search, or send me an email over on [my site](https://lukepeacock.github.io/contact/) 
 
 
 ###  .gitignore contents:
