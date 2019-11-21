@@ -11,6 +11,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "game_level.hpp"
+#include "power_up.hpp"
 
 
 // Represents the current state of the game
@@ -56,6 +57,10 @@ public:
     GLuint                 Width, Height;
     std::vector<GameLevel> Levels;
     GLuint                 Level;
+    
+    std::vector<PowerUp>  PowerUps;
+    
+    
     // Constructor/Destructor
     Game(GLuint width, GLuint height);
     ~Game();
@@ -69,6 +74,9 @@ public:
     // Reset
     void ResetLevel();
     void ResetPlayer();
+    
+    void SpawnPowerUps(GameObject &block);
+    void UpdatePowerUps(GLfloat dt);
 };
 
 #endif /* game_hpp */
