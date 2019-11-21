@@ -39,8 +39,8 @@ GLfloat ShakeTime = 0.0f;
 
 void Game::Init(int width, int height)
 {
-//    this->Width = width;
-//    this->Height = height;
+    this->Width = width;
+    this->Height = height;
     // Load shaders
     ResourceManager::LoadShader("shaders/sprite_shader.vs", "shaders/sprite_shader.frag", nullptr, "sprite");
     ResourceManager::LoadShader("shaders/particle_shader.vs", "shaders/particle_shader.frag", nullptr, "particle");

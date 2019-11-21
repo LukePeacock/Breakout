@@ -67,6 +67,7 @@ int main(int argc, char *argv[])
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     //glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_FALSE);
     
+    //TODO: Fix for retina framebuffer issue
     
     // Initialize game
     int width, height;
@@ -80,8 +81,21 @@ int main(int argc, char *argv[])
     // Start Game within Menu State
     Breakout.State = GAME_ACTIVE;
 
+    int nbFrames = 0;
+    double lastTime = glfwGetTime();
     while (!glfwWindowShouldClose(window))
     {
+        double currentTime = glfwGetTime();
+        nbFrames++;
+        if ( currentTime - lastTime >= 1.0 ){ // If last prinf() was more than 1 sec ago
+            // printf and reset timer
+            printf("%f ms/frame\n", 1000.0/double(nbFrames));
+            printf("%f FPS\n", 1/(1/double(nbFrames)));
+            nbFrames = 0;
+            lastTime += 1.0;
+        }
+        
+        
         // Calculate delta time
         GLfloat currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
