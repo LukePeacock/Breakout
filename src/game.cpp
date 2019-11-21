@@ -14,9 +14,11 @@
 #include "particle_generator.hpp"
 #include "post_processor.hpp"
 #include "power_up.hpp"
-
-
+#include "text_renderer.hpp"
+#include <sstream>
 #include <irrklang/irrKlang.h>
+
+#include <iostream>
 using namespace irrklang;
 //#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
 
@@ -28,9 +30,10 @@ BallObject          *Ball;
 ParticleGenerator   *Particles;
 PostProcessor       *Effects;
 ISoundEngine        *SoundEngine = createIrrKlangDevice();
+ TextRenderer       *Text;
 
 Game::Game(GLuint width, GLuint height)
-    : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
+    : State(GAME_ACTIVE), Keys(), Width(width), Height(height), Lives(3)
 {
 
 }
@@ -51,6 +54,8 @@ void Game::Init(int width, int height)
     ResourceManager::LoadShader("shaders/sprite_shader.vs", "shaders/sprite_shader.frag", nullptr, "sprite");
     ResourceManager::LoadShader("shaders/particle_shader.vs", "shaders/particle_shader.frag", nullptr, "particle");
     ResourceManager::LoadShader("shaders/post_processing.vs", "shaders/post_processing.frag", nullptr, "postprocessing");
+    ResourceManager::LoadShader("shaders/post_processing.vs", "shaders/post_processing.frag", nullptr, "postprocessing");
+    
     // Configure shaders
     glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(this->Width), static_cast<GLfloat>(this->Height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("sprite").Use().SetInteger("sprite", 0);
@@ -95,6 +100,10 @@ void Game::Init(int width, int height)
     glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
     Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY,
         ResourceManager::GetTexture("face"));
+    
+    // Text renderer
+    Text = new TextRenderer(this->Width, this->Height);
+    Text->Load("fonts/ocraext.TTF", 24);
 }
 
 void Game::Update(GLfloat dt)
@@ -116,7 +125,14 @@ void Game::Update(GLfloat dt)
     // Check loss condition
     if (Ball->Position.y >= this->Height) // Did ball reach bottom edge?
     {
-        this->ResetLevel();
+         --this->Lives;
+        // Did the player lose all his lives? : Game over
+        if (this->Lives == 0)
+        {
+            std::cout << "reset" << std::endl;
+            this->ResetLevel();
+            this->State = GAME_MENU;
+        }
         this->ResetPlayer();
     }
     
@@ -150,7 +166,7 @@ void Game::ProcessInput(GLfloat dt)
 
 void Game::Render()
 {
-    if(this->State == GAME_ACTIVE)
+    if(this->State == GAME_ACTIVE || this->State == GAME_MENU || this->State == GAME_WIN)
     {
         Effects->BeginRender();
             // Draw background
@@ -167,7 +183,9 @@ void Game::Render()
             Ball->Draw(*Renderer);
         Effects->EndRender();
         Effects->Render(glfwGetTime());
-        
+        // Render text (don't include in postprocessing)
+        std::stringstream ss; ss << this->Lives;
+        Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
    }
 }
 
@@ -180,6 +198,7 @@ void Game::ResetLevel()
         this->Levels[2].Load("levels/three.lvl", this->Width, this->Height * 0.5f);
     else if (this->Level == 3)
         this->Levels[3].Load("levels/four.lvl", this->Width, this->Height * 0.5f);
+    this->Lives = 3;
 }
 
 void Game::ResetPlayer()

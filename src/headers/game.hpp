@@ -57,8 +57,8 @@ public:
     GLuint                 Width, Height;
     std::vector<GameLevel> Levels;
     GLuint                 Level;
-    
-    std::vector<PowerUp>  PowerUps;
+    GLuint                 Lives;
+    std::vector<PowerUp>   PowerUps;
     
     
     // Constructor/Destructor

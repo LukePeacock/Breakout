@@ -51,6 +51,11 @@
 		A36A08FB2386EF2F0016AE48 /* powerup.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08E82386E36C0016AE48 /* powerup.wav */; };
 		A36A08FC2386EF2F0016AE48 /* solid.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08EA2386E36C0016AE48 /* solid.wav */; };
 		A36A08FD2386EF2F0016AE48 /* wall.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08EC2386E36C0016AE48 /* wall.wav */; };
+		A36A09002386F11F0016AE48 /* text_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A08FE2386F11F0016AE48 /* text_renderer.cpp */; };
+		A36A09022386F2DD0016AE48 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A36A09012386F2DD0016AE48 /* libfreetype.6.dylib */; };
+		A36A09052386F5200016AE48 /* text_shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A09032386F4F70016AE48 /* text_shader.vs */; };
+		A36A09062386F5200016AE48 /* text_shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A09042386F5060016AE48 /* text_shader.frag */; };
+		A36A090A2386F6F50016AE48 /* OCRAEXT.TTF in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A09082386F6EB0016AE48 /* OCRAEXT.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +65,8 @@
 			dstPath = shaders;
 			dstSubfolderSpec = 7;
 			files = (
+				A36A09052386F5200016AE48 /* text_shader.vs in CopyFiles */,
+				A36A09062386F5200016AE48 /* text_shader.frag in CopyFiles */,
 				A36A08D52386B6960016AE48 /* post_processing.frag in CopyFiles */,
 				A36A08D42386B6930016AE48 /* post_processing.vs in CopyFiles */,
 				A36A08CE2386B2110016AE48 /* particle_shader.frag in CopyFiles */,
@@ -114,6 +121,16 @@
 				A36A08FC2386EF2F0016AE48 /* solid.wav in CopyFiles */,
 				A36A08FD2386EF2F0016AE48 /* wall.wav in CopyFiles */,
 				A36A08EE2386E37C0016AE48 /* brick.wav in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36A09092386F6EE0016AE48 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				A36A090A2386F6F50016AE48 /* OCRAEXT.TTF in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +194,12 @@
 		A36A08EC2386E36C0016AE48 /* wall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wall.wav; sourceTree = "<group>"; };
 		A36A08EF2386E52E0016AE48 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = ../../../../../usr/local/lib/libirrklang.dylib; sourceTree = "<group>"; };
 		A36A08F92386EF270016AE48 /* paddle.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = paddle.ogg; sourceTree = "<group>"; };
+		A36A08FE2386F11F0016AE48 /* text_renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = text_renderer.cpp; path = src/text_renderer.cpp; sourceTree = SOURCE_ROOT; };
+		A36A08FF2386F11F0016AE48 /* text_renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = text_renderer.hpp; path = src/headers/text_renderer.hpp; sourceTree = SOURCE_ROOT; };
+		A36A09012386F2DD0016AE48 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../../opt/X11/lib/libfreetype.6.dylib; sourceTree = "<group>"; };
+		A36A09032386F4F70016AE48 /* text_shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = text_shader.vs; sourceTree = "<group>"; };
+		A36A09042386F5060016AE48 /* text_shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = text_shader.frag; sourceTree = "<group>"; };
+		A36A09082386F6EB0016AE48 /* OCRAEXT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = OCRAEXT.TTF; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36A09022386F2DD0016AE48 /* libfreetype.6.dylib in Frameworks */,
 				A36A08F02386E52E0016AE48 /* libirrklang.dylib in Frameworks */,
 				A36A087B2385DA810016AE48 /* libglfw.3.3.dylib in Frameworks */,
 				A36A08792385DA320016AE48 /* CoreFoundation.framework in Frameworks */,
@@ -223,6 +247,7 @@
 		A36A08752385DA2B0016AE48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A36A09012386F2DD0016AE48 /* libfreetype.6.dylib */,
 				A36A08EF2386E52E0016AE48 /* libirrklang.dylib */,
 				A36A087A2385DA810016AE48 /* libglfw.3.3.dylib */,
 				A36A08782385DA320016AE48 /* CoreFoundation.framework */,
@@ -250,6 +275,7 @@
 				A36A08C32386AC090016AE48 /* ball_object.cpp */,
 				A36A08C62386B17D0016AE48 /* particle_generator.cpp */,
 				A36A08CF2386B53E0016AE48 /* post_processor.cpp */,
+				A36A08FE2386F11F0016AE48 /* text_renderer.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -257,6 +283,7 @@
 		A36A087F2385DBF20016AE48 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				A36A08FF2386F11F0016AE48 /* text_renderer.hpp */,
 				A36A08D72386D51F0016AE48 /* power_up.hpp */,
 				A36A08D02386B53E0016AE48 /* post_processor.hpp */,
 				A36A08C72386B17D0016AE48 /* particle_generator.hpp */,
@@ -283,6 +310,8 @@
 				A36A08CC2386B1F90016AE48 /* particle_shader.frag */,
 				A36A08D22386B6720016AE48 /* post_processing.vs */,
 				A36A08D32386B6860016AE48 /* post_processing.frag */,
+				A36A09032386F4F70016AE48 /* text_shader.vs */,
+				A36A09042386F5060016AE48 /* text_shader.frag */,
 			);
 			name = shaders;
 			path = src/shaders;
@@ -291,6 +320,7 @@
 		A36A08AA2386A4210016AE48 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				A36A09072386F6EB0016AE48 /* fonts */,
 				A36A08E72386E36C0016AE48 /* sfx */,
 				A36A08D92386D84D0016AE48 /* powerup_chaos.png */,
 				A36A08DA2386D84E0016AE48 /* powerup_confuse.png */,
@@ -333,6 +363,14 @@
 			path = sfx;
 			sourceTree = "<group>";
 		};
+		A36A09072386F6EB0016AE48 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A36A09082386F6EB0016AE48 /* OCRAEXT.TTF */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -346,6 +384,7 @@
 				A36A08A2238696AA0016AE48 /* CopyFiles */,
 				A36A08B82386A4F90016AE48 /* CopyFiles */,
 				A36A08ED2386E3740016AE48 /* CopyFiles */,
+				A36A09092386F6EE0016AE48 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -396,6 +435,7 @@
 				A36A08A92386A35A0016AE48 /* game_level.cpp in Sources */,
 				A36A08C82386B17D0016AE48 /* particle_generator.cpp in Sources */,
 				A36A08A62386A3210016AE48 /* game_object.cpp in Sources */,
+				A36A09002386F11F0016AE48 /* text_renderer.cpp in Sources */,
 				A36A08912385DD6F0016AE48 /* shader.cpp in Sources */,
 				A36A08D12386B53E0016AE48 /* post_processor.cpp in Sources */,
 				A36A089A238695630016AE48 /* sprite_renderer.cpp in Sources */,
@@ -531,11 +571,13 @@
 					/users/luke/documents/github/breakout/src/headers,
 					/usr/local/include,
 					/users/luke/documents/rendering/glad/include,
+					/usr/local/Cellar/freetype/2.10.1/include/freetype2/,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/glfw/3.3/lib,
 					"/usr/local/lib/**",
 					"$(PROJECT_DIR)",
+					/opt/X11/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -551,11 +593,13 @@
 					/users/luke/documents/github/breakout/src/headers,
 					/usr/local/include,
 					/users/luke/documents/rendering/glad/include,
+					/usr/local/Cellar/freetype/2.10.1/include/freetype2/,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/glfw/3.3/lib,
 					"/usr/local/lib/**",
 					"$(PROJECT_DIR)",
+					/opt/X11/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
