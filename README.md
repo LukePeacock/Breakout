@@ -10,7 +10,7 @@ This version was made possible by [Joey De Vries' Tutorial](https://learnopengl.
 To run the program please download the repo (or just the executable) and run the executable when available (!!!!!!!this will be added later!!!!!!!). Please note that the executable has been produced for OSX only. For other operating systems, please download the repo and compile from source for your system 
 
 
-
+### Development Notes
 It is worth noting that the project was developed in Xcode and as such there are a few quirks to the setup if you wish to edit the code yourself. First of all, you will need the following libraries/frameworks
 
 - glad 
