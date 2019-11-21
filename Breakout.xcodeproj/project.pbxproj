@@ -17,17 +17,33 @@
 		A36A08912385DD6F0016AE48 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A088F2385DD6F0016AE48 /* shader.cpp */; };
 		A36A08942385DDAE0016AE48 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A08922385DDAE0016AE48 /* texture.cpp */; };
 		A36A08962385DFE80016AE48 /* stb_image_implementation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A08952385DFE80016AE48 /* stb_image_implementation.cpp */; };
+		A36A089A238695630016AE48 /* sprite_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A0898238695620016AE48 /* sprite_renderer.cpp */; };
+		A36A08A0238696A30016AE48 /* sprite_shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A089D2386961E0016AE48 /* sprite_shader.vs */; };
+		A36A08A1238696A50016AE48 /* sprite_shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A089E238696450016AE48 /* sprite_shader.frag */; };
+		A36A08A3238696B00016AE48 /* awesomeface.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A089F238696850016AE48 /* awesomeface.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A36A08692385D9AD0016AE48 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = shaders;
+			dstSubfolderSpec = 7;
 			files = (
+				A36A08A1238696A50016AE48 /* sprite_shader.frag in CopyFiles */,
+				A36A08A0238696A30016AE48 /* sprite_shader.vs in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36A08A2238696AA0016AE48 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = assets;
+			dstSubfolderSpec = 7;
+			files = (
+				A36A08A3238696B00016AE48 /* awesomeface.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -48,6 +64,11 @@
 		A36A08932385DDAE0016AE48 /* texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
 		A36A08952385DFE80016AE48 /* stb_image_implementation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stb_image_implementation.cpp; path = src/stb_image_implementation.cpp; sourceTree = SOURCE_ROOT; };
 		A36A08972385E0030016AE48 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		A36A0898238695620016AE48 /* sprite_renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = sprite_renderer.cpp; path = src/headers/sprite_renderer.cpp; sourceTree = SOURCE_ROOT; };
+		A36A0899238695620016AE48 /* sprite_renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = sprite_renderer.hpp; path = src/headers/sprite_renderer.hpp; sourceTree = SOURCE_ROOT; };
+		A36A089D2386961E0016AE48 /* sprite_shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sprite_shader.vs; sourceTree = "<group>"; };
+		A36A089E238696450016AE48 /* sprite_shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = sprite_shader.frag; sourceTree = "<group>"; };
+		A36A089F238696850016AE48 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = awesomeface.png; path = src/assets/awesomeface.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,13 +124,16 @@
 		A36A087C2385DA8C0016AE48 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				A36A08952385DFE80016AE48 /* stb_image_implementation.cpp */,
+				A36A089F238696850016AE48 /* awesomeface.png */,
+				A36A089C2386961E0016AE48 /* shaders */,
 				A36A087F2385DBF20016AE48 /* headers */,
 				A36A086E2385D9AD0016AE48 /* main.cpp */,
 				A36A08802385DC400016AE48 /* game.cpp */,
 				A36A088C2385DC980016AE48 /* resource_manager.cpp */,
 				A36A088F2385DD6F0016AE48 /* shader.cpp */,
 				A36A08922385DDAE0016AE48 /* texture.cpp */,
+				A36A0898238695620016AE48 /* sprite_renderer.cpp */,
+				A36A08952385DFE80016AE48 /* stb_image_implementation.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -117,6 +141,7 @@
 		A36A087F2385DBF20016AE48 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				A36A0899238695620016AE48 /* sprite_renderer.hpp */,
 				A36A08972385E0030016AE48 /* stb_image.h */,
 				A36A08902385DD6F0016AE48 /* shader.hpp */,
 				A36A08932385DDAE0016AE48 /* texture.hpp */,
@@ -125,6 +150,16 @@
 			);
 			name = headers;
 			path = src/headers;
+			sourceTree = SOURCE_ROOT;
+		};
+		A36A089C2386961E0016AE48 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				A36A089D2386961E0016AE48 /* sprite_shader.vs */,
+				A36A089E238696450016AE48 /* sprite_shader.frag */,
+			);
+			name = shaders;
+			path = src/shaders;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -137,6 +172,7 @@
 				A36A08672385D9AD0016AE48 /* Sources */,
 				A36A08682385D9AD0016AE48 /* Frameworks */,
 				A36A08692385D9AD0016AE48 /* CopyFiles */,
+				A36A08A2238696AA0016AE48 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -185,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A36A08912385DD6F0016AE48 /* shader.cpp in Sources */,
+				A36A089A238695630016AE48 /* sprite_renderer.cpp in Sources */,
 				A36A086F2385D9AD0016AE48 /* main.cpp in Sources */,
 				A36A087E2385DAE60016AE48 /* glad.c in Sources */,
 				A36A08942385DDAE0016AE48 /* texture.cpp in Sources */,

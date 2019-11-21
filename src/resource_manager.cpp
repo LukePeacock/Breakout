@@ -24,7 +24,7 @@ Shader ResourceManager::LoadShader(const GLchar *vShaderFile, const GLchar *fSha
     return Shaders[name];
 }
 
-Shader ResourceManager::GetShader(std::string name)
+Shader& ResourceManager::GetShader(std::string name)
 {
     return Shaders[name];
 }
@@ -98,11 +98,11 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alp
 {
     // Create Texture object
     Texture2D texture;
-//    if (alpha)
-//    {
-//        texture.Internal_Format = GL_RGBA;
-//        texture.Image_Format = GL_RGBA;
-//    }
+    if (alpha)
+    {
+        texture.Internal_Format = GL_RGBA;
+        texture.Image_Format = GL_RGBA;
+    }
 //
 //    // Load image
 //    int width, height;
