@@ -11,6 +11,13 @@
 #include "sprite_renderer.hpp"
 #include "game_level.hpp"
 
+// Initial size of the player paddle
+const glm::vec2 PLAYER_SIZE(100, 20);
+// Initial velocity of the player paddle
+const GLfloat PLAYER_VELOCITY(500.0f);
+
+GameObject      *Player;
+
 // Game-state data
 SpriteRenderer *Renderer;
 
@@ -42,6 +49,7 @@ void Game::Init()
     ResourceManager::LoadTexture("assets/awesomeface.png", GL_TRUE, "face");
     ResourceManager::LoadTexture("assets/block.png", GL_FALSE, "block");
     ResourceManager::LoadTexture("assets/block_solid.png", GL_FALSE, "block_solid");
+    ResourceManager::LoadTexture("assets/paddle.png", true, "paddle");
     // Load levels
     GameLevel one; one.Load("levels/one.lvl", this->Width, this->Height * 0.5);
     GameLevel two; two.Load("levels/two.lvl", this->Width, this->Height * 0.5);
@@ -52,6 +60,13 @@ void Game::Init()
     this->Levels.push_back(three);
     this->Levels.push_back(four);
     this->Level = 1;
+    
+    // Create player paddle
+    glm::vec2 playerPos = glm::vec2(
+        this->Width / 2 - PLAYER_SIZE.x / 2,
+        this->Height - PLAYER_SIZE.y
+    );
+    Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
 }
 
 void Game::Update(GLfloat dt)
@@ -73,5 +88,6 @@ void Game::Render()
         Renderer->DrawSprite(ResourceManager::GetTexture("background"),glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0.0f);
         // Draw level
         this->Levels[this->Level-1].Draw(*Renderer);
+        Player->Draw(*Renderer);
    }
 }
