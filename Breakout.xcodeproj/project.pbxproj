@@ -32,6 +32,10 @@
 		A36A08C02386A5580016AE48 /* two.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08B72386A4F50016AE48 /* two.lvl */; };
 		A36A08C22386A6B10016AE48 /* paddle.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08C12386A6AB0016AE48 /* paddle.png */; };
 		A36A08C52386AC090016AE48 /* ball_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A08C32386AC090016AE48 /* ball_object.cpp */; };
+		A36A08C82386B17D0016AE48 /* particle_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A08C62386B17D0016AE48 /* particle_generator.cpp */; };
+		A36A08CA2386B1D30016AE48 /* particle.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08C92386B1CC0016AE48 /* particle.png */; };
+		A36A08CD2386B20E0016AE48 /* particle_shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08CB2386B1E50016AE48 /* particle_shader.vs */; };
+		A36A08CE2386B2110016AE48 /* particle_shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08CC2386B1F90016AE48 /* particle_shader.frag */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +45,8 @@
 			dstPath = shaders;
 			dstSubfolderSpec = 7;
 			files = (
+				A36A08CE2386B2110016AE48 /* particle_shader.frag in CopyFiles */,
+				A36A08CD2386B20E0016AE48 /* particle_shader.vs in CopyFiles */,
 				A36A08A1238696A50016AE48 /* sprite_shader.frag in CopyFiles */,
 				A36A08A0238696A30016AE48 /* sprite_shader.vs in CopyFiles */,
 			);
@@ -52,6 +58,7 @@
 			dstPath = assets;
 			dstSubfolderSpec = 7;
 			files = (
+				A36A08CA2386B1D30016AE48 /* particle.png in CopyFiles */,
 				A36A08C22386A6B10016AE48 /* paddle.png in CopyFiles */,
 				A36A08B22386A4370016AE48 /* awesomeface.png in CopyFiles */,
 				A36A08B12386A4350016AE48 /* background.jpg in CopyFiles */,
@@ -111,6 +118,11 @@
 		A36A08C12386A6AB0016AE48 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
 		A36A08C32386AC090016AE48 /* ball_object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ball_object.cpp; path = src/ball_object.cpp; sourceTree = SOURCE_ROOT; };
 		A36A08C42386AC090016AE48 /* ball_object.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ball_object.hpp; path = src/headers/ball_object.hpp; sourceTree = SOURCE_ROOT; };
+		A36A08C62386B17D0016AE48 /* particle_generator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = particle_generator.cpp; path = src/particle_generator.cpp; sourceTree = SOURCE_ROOT; };
+		A36A08C72386B17D0016AE48 /* particle_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = particle_generator.hpp; path = src/headers/particle_generator.hpp; sourceTree = SOURCE_ROOT; };
+		A36A08C92386B1CC0016AE48 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
+		A36A08CB2386B1E50016AE48 /* particle_shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = particle_shader.vs; sourceTree = "<group>"; };
+		A36A08CC2386B1F90016AE48 /* particle_shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = particle_shader.frag; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +192,7 @@
 				A36A08A42386A3210016AE48 /* game_object.cpp */,
 				A36A08A72386A35A0016AE48 /* game_level.cpp */,
 				A36A08C32386AC090016AE48 /* ball_object.cpp */,
+				A36A08C62386B17D0016AE48 /* particle_generator.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -187,6 +200,7 @@
 		A36A087F2385DBF20016AE48 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				A36A08C72386B17D0016AE48 /* particle_generator.hpp */,
 				A36A08C42386AC090016AE48 /* ball_object.hpp */,
 				A36A08A82386A35A0016AE48 /* game_level.hpp */,
 				A36A08A52386A3210016AE48 /* game_object.hpp */,
@@ -206,6 +220,8 @@
 			children = (
 				A36A089D2386961E0016AE48 /* sprite_shader.vs */,
 				A36A089E238696450016AE48 /* sprite_shader.frag */,
+				A36A08CB2386B1E50016AE48 /* particle_shader.vs */,
+				A36A08CC2386B1F90016AE48 /* particle_shader.frag */,
 			);
 			name = shaders;
 			path = src/shaders;
@@ -214,6 +230,7 @@
 		A36A08AA2386A4210016AE48 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				A36A08C92386B1CC0016AE48 /* particle.png */,
 				A36A08C12386A6AB0016AE48 /* paddle.png */,
 				A36A08AB2386A4210016AE48 /* block_solid.png */,
 				A36A08AC2386A4210016AE48 /* background.jpg */,
@@ -296,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A36A08A92386A35A0016AE48 /* game_level.cpp in Sources */,
+				A36A08C82386B17D0016AE48 /* particle_generator.cpp in Sources */,
 				A36A08A62386A3210016AE48 /* game_object.cpp in Sources */,
 				A36A08912385DD6F0016AE48 /* shader.cpp in Sources */,
 				A36A089A238695630016AE48 /* sprite_renderer.cpp in Sources */,
