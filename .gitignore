@@ -1,0 +1,5 @@
+[Bb]uild/
+[Ss]rc/headers/glm/
+[Ss]rc/glad.c
+[Sc]rc/headers/stb_image.h
+[Ss]rc/stb_image_implementation.c
