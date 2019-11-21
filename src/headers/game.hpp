@@ -54,6 +54,7 @@ public:
     // Game state
     GameState              State;
     GLboolean              Keys[1024];
+    GLboolean              KeysProcessed[1024];
     GLuint                 Width, Height;
     std::vector<GameLevel> Levels;
     GLuint                 Level;
@@ -69,7 +70,7 @@ public:
     // GameLoop
     void ProcessInput(GLfloat dt);
     void Update(GLfloat dt);
-    void Render();
+    void Render(GLuint textScale);
     void DoCollisions();
     // Reset
     void ResetLevel();

@@ -33,7 +33,7 @@ ISoundEngine        *SoundEngine = createIrrKlangDevice();
  TextRenderer       *Text;
 
 Game::Game(GLuint width, GLuint height)
-    : State(GAME_ACTIVE), Keys(), Width(width), Height(height), Lives(3)
+    : State(GAME_MENU), Keys(), Width(width), Height(height), Lives(3)
 {
 
 }
@@ -43,6 +43,10 @@ Game::~Game()
     delete Renderer;
     delete Player;
     delete Ball;
+    delete Text;
+    delete Particles;
+    delete Effects;
+    delete SoundEngine;
 }
 GLfloat ShakeTime = 0.0f;
 
@@ -135,12 +139,36 @@ void Game::Update(GLfloat dt)
         }
         this->ResetPlayer();
     }
-    
+    // Check win condition
+    if (this->State == GAME_ACTIVE && this->Levels[this->Level].IsCompleted())
+    {
+        this->ResetLevel();
+        this->ResetPlayer();
+        Effects->Chaos = GL_TRUE;
+        this->State = GAME_WIN;
+    }
 }
 
 
 void Game::ProcessInput(GLfloat dt)
 {
+    if (this->State == GAME_MENU)
+    {
+        if (this->Keys[GLFW_KEY_ENTER] && !this->KeysProcessed[GLFW_KEY_ENTER])
+        {
+            this->State = GAME_ACTIVE;
+            this->KeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
+        }
+    }
+    if (this->State == GAME_WIN)
+    {
+        if (this->Keys[GLFW_KEY_ENTER])
+        {
+            this->KeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
+            Effects->Chaos = GL_FALSE;
+            this->State = GAME_MENU;
+        }
+    }
     if (this->State == GAME_ACTIVE)
     {
         GLfloat velocity = PLAYER_VELOCITY * dt;
@@ -164,7 +192,7 @@ void Game::ProcessInput(GLfloat dt)
     }
 }
 
-void Game::Render()
+void Game::Render(GLuint textScale)
 {
     if(this->State == GAME_ACTIVE || this->State == GAME_MENU || this->State == GAME_WIN)
     {
@@ -185,8 +213,18 @@ void Game::Render()
         Effects->Render(glfwGetTime());
         // Render text (don't include in postprocessing)
         std::stringstream ss; ss << this->Lives;
-        Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
-   }
+        Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f * textScale);
+    }
+    if (this->State == GAME_MENU)
+    {
+        Text->RenderText("Press ENTER to start", 250.0f * textScale, this->Height/ 2, 1.0f * textScale);
+       
+    }
+    if (this->State == GAME_WIN)
+    {
+        Text->RenderText("You WON!!!", 320.0f * textScale, this->Height / 2 - (20.0f * textScale), 1.0f * textScale, glm::vec3(0.0f, 1.0f, 0.0f));
+        Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f * textScale, this->Height / 2, 1.0f * textScale, glm::vec3(1.0f, 1.0f, 0.0f));
+    }
 }
 
 void Game::ResetLevel()

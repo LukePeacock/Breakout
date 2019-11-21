@@ -73,13 +73,14 @@ int main(int argc, char *argv[])
     int width, height;
     glfwGetFramebufferSize(window, &width, &height);
     Breakout.Init(width, height);
-
+    GLuint textScale = width/SCREEN_WIDTH;
+    
     // DeltaTime variables
     GLfloat deltaTime = 0.0f;
     GLfloat lastFrame = 0.0f;
 
     // Start Game within Menu State
-    Breakout.State = GAME_ACTIVE;
+    Breakout.State = GAME_MENU;
 
     int nbFrames = 0;
     double lastTime = glfwGetTime();
@@ -112,7 +113,7 @@ int main(int argc, char *argv[])
         // Render
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        Breakout.Render();
+        Breakout.Render(textScale);
 
         glfwSwapBuffers(window);
     }
