@@ -12,6 +12,7 @@
 #include "texture.hpp"
 #include "sprite_renderer.hpp"
 #include "game_object.hpp"
+#include <irrklang/irrKlang.h>
 
 class BallObject : public GameObject
 {
@@ -24,7 +25,7 @@ class BallObject : public GameObject
         BallObject();
         BallObject(glm::vec2 pos, GLfloat radius, glm::vec2 velocity, Texture2D sprite);
 
-        glm::vec2 Move(GLfloat dt, GLuint window_width);
+        glm::vec2 Move(GLfloat dt, GLuint window_width, irrklang::ISoundEngine *SoundEngine);
         void      Reset(glm::vec2 position, glm::vec2 velocity);
 };
 

@@ -45,6 +45,12 @@
 		A36A08E22386D8550016AE48 /* powerup_passthrough.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08DC2386D84E0016AE48 /* powerup_passthrough.png */; };
 		A36A08E32386D8550016AE48 /* powerup_speed.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08DD2386D84E0016AE48 /* powerup_speed.png */; };
 		A36A08E42386D8550016AE48 /* powerup_sticky.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08DE2386D84E0016AE48 /* powerup_sticky.png */; };
+		A36A08EE2386E37C0016AE48 /* brick.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08EB2386E36C0016AE48 /* brick.wav */; };
+		A36A08F02386E52E0016AE48 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A36A08EF2386E52E0016AE48 /* libirrklang.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		A36A08FA2386EF2F0016AE48 /* paddle.ogg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08F92386EF270016AE48 /* paddle.ogg */; };
+		A36A08FB2386EF2F0016AE48 /* powerup.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08E82386E36C0016AE48 /* powerup.wav */; };
+		A36A08FC2386EF2F0016AE48 /* solid.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08EA2386E36C0016AE48 /* solid.wav */; };
+		A36A08FD2386EF2F0016AE48 /* wall.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08EC2386E36C0016AE48 /* wall.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +100,20 @@
 				A36A08BF2386A5550016AE48 /* four.lvl in CopyFiles */,
 				A36A08BE2386A5530016AE48 /* one.lvl in CopyFiles */,
 				A36A08BD2386A5510016AE48 /* three.lvl in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36A08ED2386E3740016AE48 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = audio;
+			dstSubfolderSpec = 7;
+			files = (
+				A36A08FA2386EF2F0016AE48 /* paddle.ogg in CopyFiles */,
+				A36A08FB2386EF2F0016AE48 /* powerup.wav in CopyFiles */,
+				A36A08FC2386EF2F0016AE48 /* solid.wav in CopyFiles */,
+				A36A08FD2386EF2F0016AE48 /* wall.wav in CopyFiles */,
+				A36A08EE2386E37C0016AE48 /* brick.wav in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +171,12 @@
 		A36A08DC2386D84E0016AE48 /* powerup_passthrough.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_passthrough.png; sourceTree = "<group>"; };
 		A36A08DD2386D84E0016AE48 /* powerup_speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_speed.png; sourceTree = "<group>"; };
 		A36A08DE2386D84E0016AE48 /* powerup_sticky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_sticky.png; sourceTree = "<group>"; };
+		A36A08E82386E36C0016AE48 /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = powerup.wav; sourceTree = "<group>"; };
+		A36A08EA2386E36C0016AE48 /* solid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = solid.wav; sourceTree = "<group>"; };
+		A36A08EB2386E36C0016AE48 /* brick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = brick.wav; sourceTree = "<group>"; };
+		A36A08EC2386E36C0016AE48 /* wall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wall.wav; sourceTree = "<group>"; };
+		A36A08EF2386E52E0016AE48 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = ../../../../../usr/local/lib/libirrklang.dylib; sourceTree = "<group>"; };
+		A36A08F92386EF270016AE48 /* paddle.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = paddle.ogg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36A08F02386E52E0016AE48 /* libirrklang.dylib in Frameworks */,
 				A36A087B2385DA810016AE48 /* libglfw.3.3.dylib in Frameworks */,
 				A36A08792385DA320016AE48 /* CoreFoundation.framework in Frameworks */,
 				A36A08772385DA2B0016AE48 /* OpenGL.framework in Frameworks */,
@@ -196,6 +223,7 @@
 		A36A08752385DA2B0016AE48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A36A08EF2386E52E0016AE48 /* libirrklang.dylib */,
 				A36A087A2385DA810016AE48 /* libglfw.3.3.dylib */,
 				A36A08782385DA320016AE48 /* CoreFoundation.framework */,
 				A36A08762385DA2B0016AE48 /* OpenGL.framework */,
@@ -263,6 +291,7 @@
 		A36A08AA2386A4210016AE48 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				A36A08E72386E36C0016AE48 /* sfx */,
 				A36A08D92386D84D0016AE48 /* powerup_chaos.png */,
 				A36A08DA2386D84E0016AE48 /* powerup_confuse.png */,
 				A36A08DB2386D84E0016AE48 /* powerup_increase.png */,
@@ -292,6 +321,18 @@
 			path = src/levels;
 			sourceTree = SOURCE_ROOT;
 		};
+		A36A08E72386E36C0016AE48 /* sfx */ = {
+			isa = PBXGroup;
+			children = (
+				A36A08F92386EF270016AE48 /* paddle.ogg */,
+				A36A08E82386E36C0016AE48 /* powerup.wav */,
+				A36A08EA2386E36C0016AE48 /* solid.wav */,
+				A36A08EB2386E36C0016AE48 /* brick.wav */,
+				A36A08EC2386E36C0016AE48 /* wall.wav */,
+			);
+			path = sfx;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -304,6 +345,7 @@
 				A36A08692385D9AD0016AE48 /* CopyFiles */,
 				A36A08A2238696AA0016AE48 /* CopyFiles */,
 				A36A08B82386A4F90016AE48 /* CopyFiles */,
+				A36A08ED2386E3740016AE48 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -490,7 +532,11 @@
 					/usr/local/include,
 					/users/luke/documents/rendering/glad/include,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw/3.3/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3/lib,
+					"/usr/local/lib/**",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -506,7 +552,11 @@
 					/usr/local/include,
 					/users/luke/documents/rendering/glad/include,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw/3.3/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3/lib,
+					"/usr/local/lib/**",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -16,6 +16,10 @@
 #include "power_up.hpp"
 
 
+#include <irrklang/irrKlang.h>
+using namespace irrklang;
+//#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
+
 
 // Game-state data
 GameObject          *Player;
@@ -23,6 +27,7 @@ SpriteRenderer      *Renderer;
 BallObject          *Ball;
 ParticleGenerator   *Particles;
 PostProcessor       *Effects;
+ISoundEngine        *SoundEngine = createIrrKlangDevice();
 
 Game::Game(GLuint width, GLuint height)
     : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
@@ -95,7 +100,7 @@ void Game::Init(int width, int height)
 void Game::Update(GLfloat dt)
 {
     // Update objects
-    Ball->Move(dt, this->Width);
+    Ball->Move(dt, this->Width, SoundEngine);
     // Check for collisions
     this->DoCollisions();
     // Update particles
@@ -339,11 +344,13 @@ void Game::DoCollisions()
                 {
                     box.Destroyed = GL_TRUE;
                     this->SpawnPowerUps(box);
+                    SoundEngine->play2D("audio/brick.wav", GL_FALSE);
                 }
                 else
                 {
                     ShakeTime = 0.05f;
                     Effects->Shake = true;
+                    SoundEngine->play2D("audio/wall.wav", GL_FALSE);
                 }
                 // Collision resolution
                 Direction dir = std::get<1>(collision);
@@ -385,6 +392,7 @@ void Game::DoCollisions()
                 ActivatePowerUp(powerUp);
                 powerUp.Destroyed = GL_TRUE;
                 powerUp.Activated = GL_TRUE;
+                SoundEngine->play2D("audio/powerup.wav", GL_FALSE);
             }
         }
     }
@@ -406,6 +414,7 @@ void Game::DoCollisions()
         Ball->Velocity = glm::normalize(Ball->Velocity) * glm::length(oldVelocity); // Keep speed consistent over both axes (multiply by length of old velocity, so total strength is not changed)
         // Fix sticky paddle
         Ball->Velocity.y = -1 * abs(Ball->Velocity.y);
+        SoundEngine->play2D("audio/paddle.ogg", GL_FALSE);
     }
 }
 
