@@ -30,10 +30,10 @@ BallObject          *Ball;
 ParticleGenerator   *Particles;
 PostProcessor       *Effects;
 ISoundEngine        *SoundEngine = createIrrKlangDevice();
- TextRenderer       *Text;
+TextRenderer        *Text;
 
 Game::Game(GLuint width, GLuint height)
-    : State(GAME_MENU), Keys(), Width(width), Height(height), Lives(3)
+    : State(GAME_MENU), Keys(), Width(width), Height(height), Level(0), Lives(3)
 {
 
 }
@@ -124,7 +124,7 @@ void Game::Update(GLfloat dt)
     {
         ShakeTime -= dt;
         if (ShakeTime <= 0.0f)
-            Effects->Shake = false;
+            Effects->Shake = GL_FALSE;
     }
     // Check loss condition
     if (Ball->Position.y >= this->Height) // Did ball reach bottom edge?
@@ -158,6 +158,22 @@ void Game::ProcessInput(GLfloat dt)
         {
             this->State = GAME_ACTIVE;
             this->KeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
+        }
+        if (this->Keys[GLFW_KEY_W] && !this->KeysProcessed[GLFW_KEY_W])
+        {
+            
+            this->Level = (this->Level + 1) % 4;
+            std::cout << "Level: " << this->Level<< std::endl;
+            this->KeysProcessed[GLFW_KEY_W] = GL_TRUE;
+        }
+        if (this->Keys[GLFW_KEY_S] && !this->KeysProcessed[GLFW_KEY_S])
+        {
+            if (this->Level > 0)
+                --this->Level;
+            else
+                this->Level = 3;
+            std::cout << "Level: " << this->Level << std::endl;
+            this->KeysProcessed[GLFW_KEY_S] = GL_TRUE;
         }
     }
     if (this->State == GAME_WIN)
@@ -218,7 +234,7 @@ void Game::Render(GLuint textScale)
     if (this->State == GAME_MENU)
     {
         Text->RenderText("Press ENTER to start", 250.0f * textScale, this->Height/ 2, 1.0f * textScale);
-       
+        Text->RenderText("Press W or S to select level", 245.0f * textScale, this->Height / 2 + (20.0f * textScale) , 0.75f * textScale);
     }
     if (this->State == GAME_WIN)
     {
@@ -229,7 +245,8 @@ void Game::Render(GLuint textScale)
 
 void Game::ResetLevel()
 {
-    if (this->Level == 0)this->Levels[0].Load("levels/one.lvl", this->Width, this->Height * 0.5f);
+    if (this->Level == 0)
+        this->Levels[0].Load("levels/one.lvl", this->Width, this->Height * 0.5f);
     else if (this->Level == 1)
         this->Levels[1].Load("levels/two.lvl", this->Width, this->Height * 0.5f);
     else if (this->Level == 2)
@@ -406,7 +423,7 @@ void Game::DoCollisions()
                 else
                 {
                     ShakeTime = 0.05f;
-                    Effects->Shake = true;
+                    Effects->Shake = GL_TRUE;
                     SoundEngine->play2D("audio/wall.wav", GL_FALSE);
                 }
                 // Collision resolution

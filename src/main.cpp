@@ -137,5 +137,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             Breakout.Keys[key] = GL_TRUE;
         else if (action == GLFW_RELEASE)
             Breakout.Keys[key] = GL_FALSE;
+            Breakout.KeysProcessed[key] = GL_FALSE;
     }
 }
+
+
+
