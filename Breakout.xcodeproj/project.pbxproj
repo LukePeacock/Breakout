@@ -20,7 +20,16 @@
 		A36A089A238695630016AE48 /* sprite_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A0898238695620016AE48 /* sprite_renderer.cpp */; };
 		A36A08A0238696A30016AE48 /* sprite_shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A089D2386961E0016AE48 /* sprite_shader.vs */; };
 		A36A08A1238696A50016AE48 /* sprite_shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A089E238696450016AE48 /* sprite_shader.frag */; };
-		A36A08A3238696B00016AE48 /* awesomeface.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A089F238696850016AE48 /* awesomeface.png */; };
+		A36A08A62386A3210016AE48 /* game_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A08A42386A3210016AE48 /* game_object.cpp */; };
+		A36A08A92386A35A0016AE48 /* game_level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A36A08A72386A35A0016AE48 /* game_level.cpp */; };
+		A36A08AF2386A42E0016AE48 /* block_solid.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08AB2386A4210016AE48 /* block_solid.png */; };
+		A36A08B02386A4330016AE48 /* block.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08AD2386A4210016AE48 /* block.png */; };
+		A36A08B12386A4350016AE48 /* background.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08AC2386A4210016AE48 /* background.jpg */; };
+		A36A08B22386A4370016AE48 /* awesomeface.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08AE2386A4210016AE48 /* awesomeface.png */; };
+		A36A08BD2386A5510016AE48 /* three.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08B42386A4F50016AE48 /* three.lvl */; };
+		A36A08BE2386A5530016AE48 /* one.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08B52386A4F50016AE48 /* one.lvl */; };
+		A36A08BF2386A5550016AE48 /* four.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08B62386A4F50016AE48 /* four.lvl */; };
+		A36A08C02386A5580016AE48 /* two.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08B72386A4F50016AE48 /* two.lvl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,7 +50,23 @@
 			dstPath = assets;
 			dstSubfolderSpec = 7;
 			files = (
-				A36A08A3238696B00016AE48 /* awesomeface.png in CopyFiles */,
+				A36A08B22386A4370016AE48 /* awesomeface.png in CopyFiles */,
+				A36A08B12386A4350016AE48 /* background.jpg in CopyFiles */,
+				A36A08B02386A4330016AE48 /* block.png in CopyFiles */,
+				A36A08AF2386A42E0016AE48 /* block_solid.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36A08B82386A4F90016AE48 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = levels;
+			dstSubfolderSpec = 7;
+			files = (
+				A36A08C02386A5580016AE48 /* two.lvl in CopyFiles */,
+				A36A08BF2386A5550016AE48 /* four.lvl in CopyFiles */,
+				A36A08BE2386A5530016AE48 /* one.lvl in CopyFiles */,
+				A36A08BD2386A5510016AE48 /* three.lvl in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +93,18 @@
 		A36A0899238695620016AE48 /* sprite_renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = sprite_renderer.hpp; path = src/headers/sprite_renderer.hpp; sourceTree = SOURCE_ROOT; };
 		A36A089D2386961E0016AE48 /* sprite_shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sprite_shader.vs; sourceTree = "<group>"; };
 		A36A089E238696450016AE48 /* sprite_shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = sprite_shader.frag; sourceTree = "<group>"; };
-		A36A089F238696850016AE48 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = awesomeface.png; path = src/assets/awesomeface.png; sourceTree = SOURCE_ROOT; };
+		A36A08A42386A3210016AE48 /* game_object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = game_object.cpp; path = src/game_object.cpp; sourceTree = SOURCE_ROOT; };
+		A36A08A52386A3210016AE48 /* game_object.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = game_object.hpp; path = src/headers/game_object.hpp; sourceTree = SOURCE_ROOT; };
+		A36A08A72386A35A0016AE48 /* game_level.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = game_level.cpp; path = src/game_level.cpp; sourceTree = SOURCE_ROOT; };
+		A36A08A82386A35A0016AE48 /* game_level.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = game_level.hpp; path = src/headers/game_level.hpp; sourceTree = SOURCE_ROOT; };
+		A36A08AB2386A4210016AE48 /* block_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_solid.png; sourceTree = "<group>"; };
+		A36A08AC2386A4210016AE48 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		A36A08AD2386A4210016AE48 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
+		A36A08AE2386A4210016AE48 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
+		A36A08B42386A4F50016AE48 /* three.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = three.lvl; sourceTree = "<group>"; };
+		A36A08B52386A4F50016AE48 /* one.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = one.lvl; sourceTree = "<group>"; };
+		A36A08B62386A4F50016AE48 /* four.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = four.lvl; sourceTree = "<group>"; };
+		A36A08B72386A4F50016AE48 /* two.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = two.lvl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +160,8 @@
 		A36A087C2385DA8C0016AE48 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				A36A089F238696850016AE48 /* awesomeface.png */,
+				A36A08B32386A4F50016AE48 /* levels */,
+				A36A08AA2386A4210016AE48 /* assets */,
 				A36A089C2386961E0016AE48 /* shaders */,
 				A36A087F2385DBF20016AE48 /* headers */,
 				A36A086E2385D9AD0016AE48 /* main.cpp */,
@@ -134,6 +171,8 @@
 				A36A08922385DDAE0016AE48 /* texture.cpp */,
 				A36A0898238695620016AE48 /* sprite_renderer.cpp */,
 				A36A08952385DFE80016AE48 /* stb_image_implementation.cpp */,
+				A36A08A42386A3210016AE48 /* game_object.cpp */,
+				A36A08A72386A35A0016AE48 /* game_level.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -141,6 +180,8 @@
 		A36A087F2385DBF20016AE48 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				A36A08A82386A35A0016AE48 /* game_level.hpp */,
+				A36A08A52386A3210016AE48 /* game_object.hpp */,
 				A36A0899238695620016AE48 /* sprite_renderer.hpp */,
 				A36A08972385E0030016AE48 /* stb_image.h */,
 				A36A08902385DD6F0016AE48 /* shader.hpp */,
@@ -162,6 +203,30 @@
 			path = src/shaders;
 			sourceTree = SOURCE_ROOT;
 		};
+		A36A08AA2386A4210016AE48 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				A36A08AB2386A4210016AE48 /* block_solid.png */,
+				A36A08AC2386A4210016AE48 /* background.jpg */,
+				A36A08AD2386A4210016AE48 /* block.png */,
+				A36A08AE2386A4210016AE48 /* awesomeface.png */,
+			);
+			name = assets;
+			path = src/assets;
+			sourceTree = SOURCE_ROOT;
+		};
+		A36A08B32386A4F50016AE48 /* levels */ = {
+			isa = PBXGroup;
+			children = (
+				A36A08B42386A4F50016AE48 /* three.lvl */,
+				A36A08B52386A4F50016AE48 /* one.lvl */,
+				A36A08B62386A4F50016AE48 /* four.lvl */,
+				A36A08B72386A4F50016AE48 /* two.lvl */,
+			);
+			name = levels;
+			path = src/levels;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,6 +238,7 @@
 				A36A08682385D9AD0016AE48 /* Frameworks */,
 				A36A08692385D9AD0016AE48 /* CopyFiles */,
 				A36A08A2238696AA0016AE48 /* CopyFiles */,
+				A36A08B82386A4F90016AE48 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -220,6 +286,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36A08A92386A35A0016AE48 /* game_level.cpp in Sources */,
+				A36A08A62386A3210016AE48 /* game_object.cpp in Sources */,
 				A36A08912385DD6F0016AE48 /* shader.cpp in Sources */,
 				A36A089A238695630016AE48 /* sprite_renderer.cpp in Sources */,
 				A36A086F2385D9AD0016AE48 /* main.cpp in Sources */,
