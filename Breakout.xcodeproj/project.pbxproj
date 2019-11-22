@@ -63,7 +63,7 @@
 		A36A08692385D9AD0016AE48 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = shaders;
+			dstPath = assets/shaders;
 			dstSubfolderSpec = 7;
 			files = (
 				A36A09052386F5200016AE48 /* text_shader.vs in CopyFiles */,
@@ -80,7 +80,7 @@
 		A36A08A2238696AA0016AE48 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = assets;
+			dstPath = assets/textures;
 			dstSubfolderSpec = 7;
 			files = (
 				A36A090F2387EED10016AE48 /* ball.png in CopyFiles */,
@@ -101,7 +101,7 @@
 		A36A08B82386A4F90016AE48 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = levels;
+			dstPath = assets/levels;
 			dstSubfolderSpec = 7;
 			files = (
 				A36A090D2387E17A0016AE48 /* five.lvl in CopyFiles */,
@@ -115,7 +115,7 @@
 		A36A08ED2386E3740016AE48 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = audio;
+			dstPath = assets/audio;
 			dstSubfolderSpec = 7;
 			files = (
 				A36A08FA2386EF2F0016AE48 /* paddle.ogg in CopyFiles */,
@@ -129,7 +129,7 @@
 		A36A09092386F6EE0016AE48 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = fonts;
+			dstPath = assets/fonts;
 			dstSubfolderSpec = 7;
 			files = (
 				A36A090A2386F6F50016AE48 /* OCRAEXT.TTF in CopyFiles */,

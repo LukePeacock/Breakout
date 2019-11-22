@@ -59,10 +59,10 @@ void Game::Init(int width, int height)
     this->Width = width;
     this->Height = height;
     // Load shaders
-    ResourceManager::LoadShader("shaders/sprite_shader.vs", "shaders/sprite_shader.frag", nullptr, "sprite");
-    ResourceManager::LoadShader("shaders/particle_shader.vs", "shaders/particle_shader.frag", nullptr, "particle");
-    ResourceManager::LoadShader("shaders/post_processing.vs", "shaders/post_processing.frag", nullptr, "postprocessing");
-    ResourceManager::LoadShader("shaders/post_processing.vs", "shaders/post_processing.frag", nullptr, "postprocessing");
+    ResourceManager::LoadShader("assets/shaders/sprite_shader.vs", "assets/shaders/sprite_shader.frag", nullptr, "sprite");
+    ResourceManager::LoadShader("assets/shaders/particle_shader.vs", "assets/shaders/particle_shader.frag", nullptr, "particle");
+    ResourceManager::LoadShader("assets/shaders/post_processing.vs", "assets/shaders/post_processing.frag", nullptr, "postprocessing");
+    ResourceManager::LoadShader("assets/shaders/post_processing.vs", "assets/shaders/post_processing.frag", nullptr, "postprocessing");
     
     // Configure shaders
     glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(this->Width), static_cast<GLfloat>(this->Height), 0.0f, -1.0f, 1.0f);
@@ -72,29 +72,29 @@ void Game::Init(int width, int height)
     ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
     
     // Load textures
-    ResourceManager::LoadTexture("assets/background.jpg", GL_FALSE, "background");
-    ResourceManager::LoadTexture("assets/ball.png", GL_TRUE, "ball");
-    ResourceManager::LoadTexture("assets/block.png", GL_FALSE, "block");
-    ResourceManager::LoadTexture("assets/block_solid.png", GL_FALSE, "block_solid");
-    ResourceManager::LoadTexture("assets/paddle.png", true, "paddle");
-    ResourceManager::LoadTexture("assets/particle.png", GL_TRUE, "particle");
-    ResourceManager::LoadTexture("assets/powerup_speed.png", GL_TRUE, "powerup_speed");
-    ResourceManager::LoadTexture("assets/powerup_sticky.png", GL_TRUE, "powerup_sticky");
-    ResourceManager::LoadTexture("assets/powerup_increase.png", GL_TRUE, "powerup_increase");
-    ResourceManager::LoadTexture("assets/powerup_confuse.png", GL_TRUE, "powerup_confuse");
-    ResourceManager::LoadTexture("assets/powerup_chaos.png", GL_TRUE, "powerup_chaos");
-    ResourceManager::LoadTexture("assets/powerup_passthrough.png", GL_TRUE, "powerup_passthrough");
+    ResourceManager::LoadTexture("assets/textures/background.jpg", GL_FALSE, "background");
+    ResourceManager::LoadTexture("assets/textures/ball.png", GL_TRUE, "ball");
+    ResourceManager::LoadTexture("assets/textures/block.png", GL_FALSE, "block");
+    ResourceManager::LoadTexture("assets/textures/block_solid.png", GL_FALSE, "block_solid");
+    ResourceManager::LoadTexture("assets/textures/paddle.png", true, "paddle");
+    ResourceManager::LoadTexture("assets/textures/particle.png", GL_TRUE, "particle");
+    ResourceManager::LoadTexture("assets/textures/powerup_speed.png", GL_TRUE, "powerup_speed");
+    ResourceManager::LoadTexture("assets/textures/powerup_sticky.png", GL_TRUE, "powerup_sticky");
+    ResourceManager::LoadTexture("assets/textures/powerup_increase.png", GL_TRUE, "powerup_increase");
+    ResourceManager::LoadTexture("assets/textures/powerup_confuse.png", GL_TRUE, "powerup_confuse");
+    ResourceManager::LoadTexture("assets/textures/powerup_chaos.png", GL_TRUE, "powerup_chaos");
+    ResourceManager::LoadTexture("assets/textures/powerup_passthrough.png", GL_TRUE, "powerup_passthrough");
     
     // Set render-specific controls
     Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
     Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
     Effects = new PostProcessor(ResourceManager::GetShader("postprocessing"), this->Width, this->Height);
     // Load levels
-    GameLevel one; one.Load("levels/one.lvl", this->Width, this->Height * 0.5);
-    GameLevel two; two.Load("levels/two.lvl", this->Width, this->Height * 0.5);
-    GameLevel three; three.Load("levels/three.lvl", this->Width, this->Height * 0.5);
-    GameLevel four; four.Load("levels/four.lvl", this->Width, this->Height * 0.5);
-    GameLevel five; five.Load("levels/five.lvl", this->Width, this->Height * 0.5);
+    GameLevel one; one.Load("assets/levels/one.lvl", this->Width, this->Height * 0.5);
+    GameLevel two; two.Load("assets/levels/two.lvl", this->Width, this->Height * 0.5);
+    GameLevel three; three.Load("assets/levels/three.lvl", this->Width, this->Height * 0.5);
+    GameLevel four; four.Load("assets/levels/four.lvl", this->Width, this->Height * 0.5);
+    GameLevel five; five.Load("assets/levels/five.lvl", this->Width, this->Height * 0.5);
     this->Levels.push_back(one);
     this->Levels.push_back(two);
     this->Levels.push_back(three);
@@ -113,7 +113,7 @@ void Game::Init(int width, int height)
     
     // Text renderer
     Text = new TextRenderer(this->Width, this->Height);
-    Text->Load("fonts/ocraext.TTF", 24);
+    Text->Load("assets/fonts/ocraext.TTF", 24);
 }
 
 // Update game state including ball position, collisions, particles, power ups, shake timer,
@@ -276,15 +276,15 @@ void Game::Render(GLuint textScale)
 void Game::ResetLevel()
 {
     if (this->Level == 0)
-        this->Levels[0].Load("levels/one.lvl", this->Width, this->Height * 0.5f);
+        this->Levels[0].Load("assets/levels/one.lvl", this->Width, this->Height * 0.5f);
     else if (this->Level == 1)
-        this->Levels[1].Load("levels/two.lvl", this->Width, this->Height * 0.5f);
+        this->Levels[1].Load("assets/levels/two.lvl", this->Width, this->Height * 0.5f);
     else if (this->Level == 2)
-        this->Levels[2].Load("levels/three.lvl", this->Width, this->Height * 0.5f);
+        this->Levels[2].Load("assets/levels/three.lvl", this->Width, this->Height * 0.5f);
     else if (this->Level == 3)
-        this->Levels[3].Load("levels/four.lvl", this->Width, this->Height * 0.5f);
+        this->Levels[3].Load("assets/levels/four.lvl", this->Width, this->Height * 0.5f);
     else if (this->Level == 4)
-    this->Levels[4].Load("levels/five.lvl", this->Width, this->Height * 0.5f);
+    this->Levels[4].Load("assets/levels/five.lvl", this->Width, this->Height * 0.5f);
     this->Lives = 3;
     this->Score = 0;
 }
@@ -463,14 +463,14 @@ void Game::DoCollisions()
                     box.Destroyed = GL_TRUE;
                     this->Score += 10;
                     this->SpawnPowerUps(box);
-                    SoundEngine->play2D("audio/brick.wav", GL_FALSE);
+                    SoundEngine->play2D("assets/audio/brick.wav", GL_FALSE);
                 }
                 else
                 {
                     // else, cause shake effect, and play audio cue
                     ShakeTime = 0.05f;
                     Effects->Shake = GL_TRUE;
-                    SoundEngine->play2D("audio/wall.wav", GL_FALSE);
+                    SoundEngine->play2D("assets/audio/wall.wav", GL_FALSE);
                 }
                 // Collision resolution
                 Direction dir = std::get<1>(collision);
@@ -513,7 +513,7 @@ void Game::DoCollisions()
                 ActivatePowerUp(powerUp);
                 powerUp.Destroyed = GL_TRUE;
                 powerUp.Activated = GL_TRUE;
-                SoundEngine->play2D("audio/powerup.wav", GL_FALSE);
+                SoundEngine->play2D("assets/audio/powerup.wav", GL_FALSE);
             }
         }
     }
@@ -535,7 +535,7 @@ void Game::DoCollisions()
         Ball->Velocity = glm::normalize(Ball->Velocity) * glm::length(oldVelocity); // Keep speed consistent over both axes (multiply by length of old velocity, so total strength is not changed)
         // Fix sticky paddle
         Ball->Velocity.y = -1 * abs(Ball->Velocity.y);
-        SoundEngine->play2D("audio/paddle.ogg", GL_FALSE);
+        SoundEngine->play2D("assets/audio/paddle.ogg", GL_FALSE);
     }
 }
 

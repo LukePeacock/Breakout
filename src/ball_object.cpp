@@ -29,19 +29,19 @@ glm::vec2 BallObject::Move(GLfloat dt, GLuint window_width,ISoundEngine *SoundEn
         {
             this->Velocity.x = -this->Velocity.x;
             this->Position.x = 0.0f;
-            SoundEngine->play2D("audio/wall.wav", GL_FALSE);
+            SoundEngine->play2D("assets/audio/wall.wav", GL_FALSE);
         }
         else if (this->Position.x + this->Size.x >= window_width)
         {
             this->Velocity.x = -this->Velocity.x;
             this->Position.x = window_width - this->Size.x;
-            SoundEngine->play2D("audio/wall.wav", GL_FALSE);
+            SoundEngine->play2D("assets/audio/wall.wav", GL_FALSE);
         }
         if (this->Position.y <= 0.0f)
         {
             this->Velocity.y = -this->Velocity.y;
             this->Position.y = 0.0f;
-            SoundEngine->play2D("audio/wall.wav", GL_FALSE);
+            SoundEngine->play2D("assets/audio/wall.wav", GL_FALSE);
         }
     }
     return this->Position;
