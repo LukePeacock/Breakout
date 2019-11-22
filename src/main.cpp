@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
    
     // Set key callbacks and OpenGL configuration
     glfwSetKeyCallback(window, key_callback);
-    glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
     glEnable(GL_CULL_FACE);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -65,6 +65,7 @@ int main(int argc, char *argv[])
     // Must calculate framebuffer size at runtime to fix framebuffer issues on high DPI displays such as Retina display.
     int width, height;
     glfwGetFramebufferSize(window, &width, &height);
+    glViewport(0, 0, width, height);
     Breakout.Init(width, height);
     GLuint textScale = width/SCREEN_WIDTH;
     
