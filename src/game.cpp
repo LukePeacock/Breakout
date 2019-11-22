@@ -143,10 +143,12 @@ void Game::Update(GLfloat dt)
     // Check win condition
     if (this->State == GAME_ACTIVE && this->Levels[this->Level].IsCompleted())
     {
+        GLuint score = this->Score;
         this->ResetLevel();
         this->ResetPlayer();
         Effects->Chaos = GL_TRUE;
         this->State = GAME_WIN;
+        this->Score = score;
     }
 }
 
@@ -163,7 +165,7 @@ void Game::ProcessInput(GLfloat dt)
         if (this->Keys[GLFW_KEY_W] && !this->KeysProcessed[GLFW_KEY_W])
         {
             
-            this->Level = (this->Level + 1) % (this->Levels.size()-1);
+            this->Level = (this->Level + 1) % this->Levels.size();
             std::cout << "Level: " << this->Level<< std::endl;
             this->KeysProcessed[GLFW_KEY_W] = GL_TRUE;
         }
@@ -181,6 +183,7 @@ void Game::ProcessInput(GLfloat dt)
     {
         if (this->Keys[GLFW_KEY_ENTER])
         {
+            this->Score = 0;
             this->KeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
             Effects->Chaos = GL_FALSE;
             this->State = GAME_MENU;
