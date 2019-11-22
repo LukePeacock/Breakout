@@ -8,17 +8,21 @@
 
 #include "sprite_renderer.hpp"
 
+
+// Constructor
 SpriteRenderer::SpriteRenderer(Shader &shader)
 {
     this->shader = shader;
     this->initRenderData();
 }
 
+// Destructor
 SpriteRenderer::~SpriteRenderer()
 {
     glDeleteVertexArrays(1, &this->quadVAO);
 }
 
+// Render the sprite
 void SpriteRenderer::DrawSprite(const Texture2D &texture, glm::vec2 position, glm::vec2 size, GLfloat rotate, glm::vec3 color)
 {
     // Prepare transformations
@@ -44,6 +48,7 @@ void SpriteRenderer::DrawSprite(const Texture2D &texture, glm::vec2 position, gl
     glBindVertexArray(0);
 }
 
+// Initialise sprite data, assume sprite is square
 void SpriteRenderer::initRenderData()
 {
     // Configure VAO/VBO

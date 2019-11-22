@@ -14,6 +14,7 @@
 #include "game_object.hpp"
 #include <irrklang/irrKlang.h>
 
+
 class BallObject : public GameObject
 {
     public:
@@ -22,9 +23,11 @@ class BallObject : public GameObject
         GLboolean Stuck;
         GLboolean Sticky, PassThrough;
 
+        // Constructors
         BallObject();
         BallObject(glm::vec2 pos, GLfloat radius, glm::vec2 velocity, Texture2D sprite);
 
+        // Functions to move and reset the ball position
         glm::vec2 Move(GLfloat dt, GLuint window_width, irrklang::ISoundEngine *SoundEngine);
         void      Reset(glm::vec2 position, glm::vec2 velocity);
 };

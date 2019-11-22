@@ -9,6 +9,8 @@
 #include "ball_object.hpp"
 using namespace irrklang;
 
+
+// Constructors
 BallObject::BallObject()
     : GameObject(), Radius(12.5f), Stuck(true), Sticky(GL_FALSE), PassThrough(GL_FALSE)  { }
 

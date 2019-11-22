@@ -16,21 +16,23 @@
 #include "shader.hpp"
 
 
-// PostProcessor hosts all PostProcessing effects for the Breakout
-// Game. It renders the game on a textured quad after which one can
-// enable specific effects by enabling either the Confuse, Chaos or
-// Shake boolean.
-// It is required to call BeginRender() before rendering the game
+// Hosts all PostProcessing effects for the Breakout Game.
+// Renders the game on a textured quad
+// allows one to enable specific effects by enabling either
+// the Confuse, Chaos or Shake boolean.
+// Required to call BeginRender() before rendering the game
 // and EndRender() after rendering the game for the class to work.
 class PostProcessor
 {
 public:
-    // State
+    // State information
     Shader PostProcessingShader;
     Texture2D Texture;
     GLuint Width, Height;
+    
     // Options
     GLboolean Confuse, Chaos, Shake;
+    
     // Constructor
     PostProcessor(Shader shader, GLuint width, GLuint height);
     // Prepares the postprocessor's framebuffer operations before rendering the game

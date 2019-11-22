@@ -16,19 +16,17 @@
 // GLFW function declerations
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
-// The Width of the screen
+// The Width and Height of the screen
 const GLuint SCREEN_WIDTH = 800;
-// The height of the screen
 const GLuint SCREEN_HEIGHT = 600;
 
-
+// Game Object
 Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
 int main(int argc, char *argv[])
 {
-        // initialize and configure GLFW
-    // -----------------------------
+    // initialize and configure GLFW
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -39,7 +37,6 @@ int main(int argc, char *argv[])
     #endif
 
     // Create GLFW window and make it the current context
-    // ------------------
     GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Breakout", NULL, NULL);
     if (window == NULL)
     {
@@ -47,29 +44,25 @@ int main(int argc, char *argv[])
         glfwTerminate();
         return -1;
     }
-    
     glfwMakeContextCurrent(window);
     
     // load all OpenGL function pointers using GLAD
-    // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
    
-
+    // Set key callbacks and OpenGL configuration
     glfwSetKeyCallback(window, key_callback);
-    // OpenGL configuration
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     glEnable(GL_CULL_FACE);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    //glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_FALSE);
+   
     
-    //TODO: Fix for retina framebuffer issue
-    
-    // Initialize game
+    // Calculate framebuffer size and initialize game
+    // Must calculate framebuffer size at runtime to fix framebuffer issues on high DPI displays such as Retina display.
     int width, height;
     glfwGetFramebufferSize(window, &width, &height);
     Breakout.Init(width, height);
@@ -90,7 +83,6 @@ int main(int argc, char *argv[])
         lastFrame = currentFrame;
         glfwPollEvents();
 
-        //deltaTime = 0.001f;
         // Manage user input
         Breakout.ProcessInput(deltaTime);
 

@@ -17,7 +17,7 @@
 #include "shader.hpp"
 
 
-/// Holds all state information relevant to a character as loaded using FreeType
+// Holds all state information relevant to a character as loaded using FreeType
 struct Character {
     GLuint TextureID;   // ID handle of the glyph texture
     glm::ivec2 Size;    // Size of glyph

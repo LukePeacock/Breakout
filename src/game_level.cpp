@@ -36,15 +36,19 @@ void GameLevel::Load(const GLchar *file, GLuint levelWidth, GLuint levelHeight)
     }
 }
 
+// Draw the level
 void GameLevel::Draw(SpriteRenderer &renderer)
 {
+    // Draw all non destroyed blocks
     for (GameObject &tile : this->Bricks)
         if (!tile.Destroyed)
             tile.Draw(renderer);
 }
 
+// Check if level is complete
 GLboolean GameLevel::IsCompleted()
 {
+    // If all non solid blocks are destroyed, level is complete
     for (GameObject &tile : this->Bricks)
         if (!tile.IsSolid && !tile.Destroyed)
             return GL_FALSE;

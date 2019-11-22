@@ -10,6 +10,8 @@
 
 #include <iostream>
 
+// Handle framebuffer rendering
+
 PostProcessor::PostProcessor(Shader shader, GLuint width, GLuint height)
     : PostProcessingShader(shader), Texture(), Width(width), Height(height), Confuse(GL_FALSE), Chaos(GL_FALSE), Shake(GL_FALSE)
 {
@@ -64,12 +66,15 @@ PostProcessor::PostProcessor(Shader shader, GLuint width, GLuint height)
     glUniform1fv(glGetUniformLocation(this->PostProcessingShader.ID, "blur_kernel"), 9, blur_kernel);
 }
 
+// Start rendering to framebuffer
 void PostProcessor::BeginRender()
 {
     glBindFramebuffer(GL_FRAMEBUFFER, this->MSFBO);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }
+
+// End rendering to framebuffer
 void PostProcessor::EndRender()
 {
     // Now resolve multisampled color-buffer into intermediate FBO to store to texture
@@ -79,6 +84,7 @@ void PostProcessor::EndRender()
     glBindFramebuffer(GL_FRAMEBUFFER, 0); // Binds both READ and WRITE framebuffer to default framebuffer
 }
 
+// Render the framebuffer to screen
 void PostProcessor::Render(GLfloat time)
 {
     // Set uniforms/options
@@ -95,6 +101,7 @@ void PostProcessor::Render(GLfloat time)
     glBindVertexArray(0);
 }
 
+// Initialise renderer data
 void PostProcessor::initRenderData()
 {
     // Configure VAO/VBO

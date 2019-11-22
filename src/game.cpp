@@ -20,8 +20,8 @@
 
 #include <iostream>
 using namespace irrklang;
-//#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
 
+// Handles game functions: render, update, process input, power ups, collisions, etc.
 
 // Game-state data
 GameObject          *Player;
@@ -32,12 +32,16 @@ PostProcessor       *Effects;
 ISoundEngine        *SoundEngine = createIrrKlangDevice();
 TextRenderer        *Text;
 
+GLfloat ShakeTime = 0.0f;
+
+// constructor
 Game::Game(GLuint width, GLuint height)
     : State(GAME_MENU), Keys(), Width(width), Height(height), Level(0), Lives(3), Score(0)
 {
 
 }
 
+// Destructor
 Game::~Game()
 {
     delete Renderer;
@@ -48,8 +52,8 @@ Game::~Game()
     delete Effects;
     delete SoundEngine;
 }
-GLfloat ShakeTime = 0.0f;
 
+// Initialise shaders, textures, and other game assets
 void Game::Init(int width, int height)
 {
     this->Width = width;
@@ -112,6 +116,8 @@ void Game::Init(int width, int height)
     Text->Load("fonts/ocraext.TTF", 24);
 }
 
+// Update game state including ball position, collisions, particles, power ups, shake timer,
+// loss state, and win state
 void Game::Update(GLfloat dt)
 {
     // Update objects
@@ -153,15 +159,19 @@ void Game::Update(GLfloat dt)
 }
 
 
+// Process input, start game, change level, move paddle, etc.
 void Game::ProcessInput(GLfloat dt)
 {
+    // If player is in menu, can change and choose level
     if (this->State == GAME_MENU)
     {
+        // Choose current level
         if (this->Keys[GLFW_KEY_ENTER] && !this->KeysProcessed[GLFW_KEY_ENTER])
         {
             this->State = GAME_ACTIVE;
             this->KeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
         }
+        // See next level
         if (this->Keys[GLFW_KEY_W] && !this->KeysProcessed[GLFW_KEY_W])
         {
             
@@ -169,6 +179,7 @@ void Game::ProcessInput(GLfloat dt)
             std::cout << "Level: " << this->Level<< std::endl;
             this->KeysProcessed[GLFW_KEY_W] = GL_TRUE;
         }
+        // See previous level
         if (this->Keys[GLFW_KEY_S] && !this->KeysProcessed[GLFW_KEY_S])
         {
             if (this->Level > 0)
@@ -179,8 +190,10 @@ void Game::ProcessInput(GLfloat dt)
             this->KeysProcessed[GLFW_KEY_S] = GL_TRUE;
         }
     }
+    // If game is won, can return to menu
     if (this->State == GAME_WIN)
     {
+        // Return to menu
         if (this->Keys[GLFW_KEY_ENTER])
         {
             this->Score = 0;
@@ -189,10 +202,11 @@ void Game::ProcessInput(GLfloat dt)
             this->State = GAME_MENU;
         }
     }
+    // If game is active, move paddle
     if (this->State == GAME_ACTIVE)
     {
         GLfloat velocity = PLAYER_VELOCITY * dt;
-        // Move playerboard
+        // Move playerboard left
         if (this->Keys[GLFW_KEY_A])
         {
             if (Player->Position.x >= 0)
@@ -200,6 +214,7 @@ void Game::ProcessInput(GLfloat dt)
                 if (Ball->Stuck)
                     Ball->Position.x -= velocity;
         }
+        // Move player right
         if (this->Keys[GLFW_KEY_D])
         {
             if (Player->Position.x <= this->Width - Player->Size.x)
@@ -207,19 +222,22 @@ void Game::ProcessInput(GLfloat dt)
                 if (Ball->Stuck)
                     Ball->Position.x += velocity;
         }
+        // Launch ball
         if (this->Keys[GLFW_KEY_SPACE])
             Ball->Stuck = false;
     }
 }
 
+// Render game
 void Game::Render(GLuint textScale)
 {
     if(this->State == GAME_ACTIVE || this->State == GAME_MENU || this->State == GAME_WIN)
     {
+        // Start rendering to framebuffer
         Effects->BeginRender();
             // Draw background
             Renderer->DrawSprite(ResourceManager::GetTexture("background"),glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0.0f);
-            // Draw level
+            // Draw level, player, and power ups
             this->Levels[this->Level].Draw(*Renderer);
             Player->Draw(*Renderer);
             for (PowerUp &powerUp : this->PowerUps)
@@ -229,6 +247,7 @@ void Game::Render(GLuint textScale)
             Particles->Draw();
             // Draw ball
             Ball->Draw(*Renderer);
+        // Stop rendering to framebuffer and render framebuffer to screen
         Effects->EndRender();
         Effects->Render(glfwGetTime());
         // Render text (don't include in postprocessing)
@@ -237,11 +256,13 @@ void Game::Render(GLuint textScale)
         std::stringstream score; score << this->Score;
         Text->RenderText("Score:" + score.str(), this->Width - (200.0f * textScale),5.0f, 1.0f * textScale);
     }
+    // Display menu text
     if (this->State == GAME_MENU)
     {
         Text->RenderText("Press ENTER to start", 250.0f * textScale, this->Height/ 2, 1.0f * textScale);
         Text->RenderText("Press W or S to select level", 245.0f * textScale, this->Height / 2 + (20.0f * textScale) , 0.75f * textScale);
     }
+    // Display win state text
     if (this->State == GAME_WIN)
     {
         Text->RenderText("You WON!!!", 320.0f * textScale, this->Height / 2 - (20.0f * textScale), 1.0f * textScale, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -251,6 +272,7 @@ void Game::Render(GLuint textScale)
     }
 }
 
+// Reset the level, lives, and score
 void Game::ResetLevel()
 {
     if (this->Level == 0)
@@ -267,6 +289,7 @@ void Game::ResetLevel()
     this->Score = 0;
 }
 
+// Reset the player position and effects
 void Game::ResetPlayer()
 {
     // Reset player/ball stats
@@ -284,8 +307,10 @@ void Game::ResetPlayer()
 // PowerUps
 GLboolean IsOtherPowerUpActive(std::vector<PowerUp> &powerUps, std::string type);
 
+// Update all power-ups
 void Game::UpdatePowerUps(GLfloat dt)
 {
+    // For powerups in game update position and duration of active powerups
     for (PowerUp &powerUp : this->PowerUps)
     {
         powerUp.Position += powerUp.Velocity * dt;
@@ -300,6 +325,7 @@ void Game::UpdatePowerUps(GLfloat dt)
                 // Deactivate effects
                 if (powerUp.Type == "sticky")
                 {
+                    // If there is no other effect of this type active, then deactivate it.
                     if (!IsOtherPowerUpActive(this->PowerUps, "sticky"))
                     {    // Only reset if no other PowerUp of type sticky is active
                         Ball->Sticky = GL_FALSE;
@@ -308,6 +334,7 @@ void Game::UpdatePowerUps(GLfloat dt)
                 }
                 else if (powerUp.Type == "pass-through")
                 {
+                    // If there is no other effect of this type active, then deactivate it.
                     if (!IsOtherPowerUpActive(this->PowerUps, "pass-through"))
                     {    // Only reset if no other PowerUp of type pass-through is active
                         Ball->PassThrough = GL_FALSE;
@@ -316,6 +343,7 @@ void Game::UpdatePowerUps(GLfloat dt)
                 }
                 else if (powerUp.Type == "confuse")
                 {
+                    // If there is no other effect of this type active, then deactivate it.
                     if (!IsOtherPowerUpActive(this->PowerUps, "confuse"))
                     {    // Only reset if no other PowerUp of type confuse is active
                         Effects->Confuse = GL_FALSE;
@@ -323,6 +351,7 @@ void Game::UpdatePowerUps(GLfloat dt)
                 }
                 else if (powerUp.Type == "chaos")
                 {
+                    // If there is no other effect of this type active, then deactivate it.
                     if (!IsOtherPowerUpActive(this->PowerUps, "chaos"))
                     {    // Only reset if no other PowerUp of type chaos is active
                         Effects->Chaos = GL_FALSE;
@@ -338,13 +367,14 @@ void Game::UpdatePowerUps(GLfloat dt)
     ), this->PowerUps.end());
 }
 
-
+// Calculate chance of spawning
 GLboolean ShouldSpawn(GLuint chance)
 {
     GLuint random = rand() % chance;
     return random == 0;
 }
 
+// Spawn power-ups when necessary
 void Game::SpawnPowerUps(GameObject &block)
 {
     if (ShouldSpawn(75)) // 1 in 75 chance
@@ -357,11 +387,11 @@ void Game::SpawnPowerUps(GameObject &block)
         this->PowerUps.push_back(PowerUp("pad-size-increase", glm::vec3(1.0f, 0.6f, 0.4), 0.0f, block.Position, ResourceManager::GetTexture("powerup_increase")));
     if (ShouldSpawn(15)) // Negative powerups should spawn more often
         this->PowerUps.push_back(PowerUp("confuse", glm::vec3(1.0f, 0.3f, 0.3f), 15.0f, block.Position, ResourceManager::GetTexture("powerup_confuse")));
-    if (ShouldSpawn(15))
+    if (ShouldSpawn(15))    // 1 in 15 chance
         this->PowerUps.push_back(PowerUp("chaos", glm::vec3(0.9f, 0.25f, 0.25f), 15.0f, block.Position, ResourceManager::GetTexture("powerup_chaos")));
 }
 
-                                 
+// Active powerup
 void ActivatePowerUp(PowerUp &powerUp)
 {
     // Initiate a powerup based type of powerup
@@ -394,7 +424,8 @@ void ActivatePowerUp(PowerUp &powerUp)
             Effects->Chaos = GL_TRUE;
     }
 }
-                                 
+                            
+// Check if another powerup of specified type is active
 GLboolean IsOtherPowerUpActive(std::vector<PowerUp> &powerUps, std::string type)
 {
     // Check if another PowerUp of the same type is still active
@@ -414,17 +445,19 @@ GLboolean CheckCollision(GameObject &one, GameObject &two);
 Collision CheckCollision(BallObject &one, GameObject &two);
 Direction VectorDirection(glm::vec2 closest);
 
-
+// Do the collision detection
 void Game::DoCollisions()
 {
+    // For blocks in level
     for (GameObject &box : this->Levels[this->Level].Bricks)
     {
+        // if block is not destroyed, check collision with ball
         if (!box.Destroyed)
         {
             Collision collision = CheckCollision(*Ball, box);
             if (std::get<0>(collision)) // If collision is true
             {
-                // Destroy block if not solid
+                // if block not solid, destroy, add to score, spawn power-up, and play audio cue
                 if (!box.IsSolid)
                 {
                     box.Destroyed = GL_TRUE;
@@ -434,6 +467,7 @@ void Game::DoCollisions()
                 }
                 else
                 {
+                    // else, cause shake effect, and play audio cue
                     ShakeTime = 0.05f;
                     Effects->Shake = GL_TRUE;
                     SoundEngine->play2D("audio/wall.wav", GL_FALSE);
@@ -467,6 +501,7 @@ void Game::DoCollisions()
             }
         }
     }
+    // For powerups in level, check collision with player.
     for (PowerUp &powerUp : this->PowerUps)
     {
         if (!powerUp.Destroyed)
@@ -474,7 +509,7 @@ void Game::DoCollisions()
             if (powerUp.Position.y >= this->Height)
                 powerUp.Destroyed = GL_TRUE;
             if (CheckCollision(*Player, powerUp))
-            {    // Collided with player, now activate powerup
+            {    // Collided with player, now activate powerup and play audio cue
                 ActivatePowerUp(powerUp);
                 powerUp.Destroyed = GL_TRUE;
                 powerUp.Activated = GL_TRUE;
@@ -504,6 +539,7 @@ void Game::DoCollisions()
     }
 }
 
+// Collision with two blocks
 GLboolean CheckCollision(GameObject &one, GameObject &two) // AABB - AABB collision
 {
     // Collision x-axis?
@@ -516,6 +552,7 @@ GLboolean CheckCollision(GameObject &one, GameObject &two) // AABB - AABB collis
     return collisionX && collisionY;
 }
 
+// Collision with ball and block
 Collision CheckCollision(BallObject &one, GameObject &two) // AABB - Circle collision
 {
     // Get center point circle first

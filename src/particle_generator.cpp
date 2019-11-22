@@ -109,6 +109,8 @@ GLuint ParticleGenerator::firstUnusedParticle()
     return 0;
 }
 
+
+// Respawn a particle 
 void ParticleGenerator::respawnParticle(Particle &particle, GameObject &object, glm::vec2 offset)
 {
     GLfloat random = ((rand() % 100) - 50) / 10.0f;

@@ -14,7 +14,7 @@
 #include FT_FREETYPE_H
 
 
-
+// Handles the text rendering
 
 TextRenderer::TextRenderer(GLuint width, GLuint height)
 {
@@ -34,6 +34,7 @@ TextRenderer::TextRenderer(GLuint width, GLuint height)
     glBindVertexArray(0);
 }
 
+// Load renderer
 void TextRenderer::Load(std::string font, GLuint fontSize)
 {
     // First clear the previously loaded Characters
@@ -95,6 +96,7 @@ void TextRenderer::Load(std::string font, GLuint fontSize)
     FT_Done_FreeType(ft);
 }
 
+// Do the actual text rendering
 void TextRenderer::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
 {
     // Activate corresponding render state

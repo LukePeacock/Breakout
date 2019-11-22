@@ -16,22 +16,22 @@ void main()
     color = vec4(0.0f);
     vec3 sample[9];
     // sample from texture offsets if using convolution matrix
-    if(chaos || shake)
+    if(chaos || shake)  // If chaos or shake effect, offset the fragments
         for(int i = 0; i < 9; i++)
             sample[i] = vec3(texture(scene, TexCoords.st + offsets[i]));
 
     // process effects
-    if(chaos)
+    if(chaos)   // Change color using edge kernel
     {
         for(int i = 0; i < 9; i++)
             color += vec4(sample[i] * edge_kernel[i], 0.0f);
         color.a = 1.0f;
     }
-    else if(confuse)
+    else if(confuse)    // invert colors
     {
         color = vec4(1.0 - texture(scene, TexCoords).rgb, 1.0);
     }
-    else if(shake)
+    else if(shake)      // Change color via blur kernel
     {
         for(int i = 0; i < 9; i++)
             color += vec4(sample[i] * blur_kernel[i], 0.0f);

@@ -18,8 +18,8 @@
 #include "resource_manager.hpp"
 
 
-/// GameLevel holds all Tiles as part of a Breakout level and
-/// hosts functionality to Load/render levels from the harddisk.
+// GameLevel holds all Tiles as part of a Breakout level and
+// hosts functionality to Load/render levels from the harddisk.
 class GameLevel
 {
 public:
