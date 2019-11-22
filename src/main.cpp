@@ -82,21 +82,8 @@ int main(int argc, char *argv[])
     // Start Game within Menu State
     Breakout.State = GAME_MENU;
 
-    int nbFrames = 0;
-    double lastTime = glfwGetTime();
     while (!glfwWindowShouldClose(window))
     {
-        double currentTime = glfwGetTime();
-        nbFrames++;
-        if ( currentTime - lastTime >= 1.0 ){ // If last prinf() was more than 1 sec ago
-            // printf and reset timer
-            printf("%f ms/frame\n", 1000.0/double(nbFrames));
-            printf("%f FPS\n", 1/(1/double(nbFrames)));
-            nbFrames = 0;
-            lastTime += 1.0;
-        }
-        
-        
         // Calculate delta time
         GLfloat currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;

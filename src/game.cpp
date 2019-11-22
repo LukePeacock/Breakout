@@ -33,7 +33,7 @@ ISoundEngine        *SoundEngine = createIrrKlangDevice();
 TextRenderer        *Text;
 
 Game::Game(GLuint width, GLuint height)
-    : State(GAME_MENU), Keys(), Width(width), Height(height), Level(0), Lives(3)
+    : State(GAME_MENU), Keys(), Width(width), Height(height), Level(0), Lives(3), Score(0)
 {
 
 }
@@ -90,10 +90,12 @@ void Game::Init(int width, int height)
     GameLevel two; two.Load("levels/two.lvl", this->Width, this->Height * 0.5);
     GameLevel three; three.Load("levels/three.lvl", this->Width, this->Height * 0.5);
     GameLevel four; four.Load("levels/four.lvl", this->Width, this->Height * 0.5);
+    GameLevel five; five.Load("levels/five.lvl", this->Width, this->Height * 0.5);
     this->Levels.push_back(one);
     this->Levels.push_back(two);
     this->Levels.push_back(three);
     this->Levels.push_back(four);
+    this->Levels.push_back(five);
     this->Level = 0;       // zero-indexed list: level 1 = level[0], etc..
     
     // Create player paddle
@@ -133,7 +135,6 @@ void Game::Update(GLfloat dt)
         // Did the player lose all his lives? : Game over
         if (this->Lives == 0)
         {
-            std::cout << "reset" << std::endl;
             this->ResetLevel();
             this->State = GAME_MENU;
         }
@@ -162,7 +163,7 @@ void Game::ProcessInput(GLfloat dt)
         if (this->Keys[GLFW_KEY_W] && !this->KeysProcessed[GLFW_KEY_W])
         {
             
-            this->Level = (this->Level + 1) % 4;
+            this->Level = (this->Level + 1) % (this->Levels.size()-1);
             std::cout << "Level: " << this->Level<< std::endl;
             this->KeysProcessed[GLFW_KEY_W] = GL_TRUE;
         }
@@ -171,7 +172,7 @@ void Game::ProcessInput(GLfloat dt)
             if (this->Level > 0)
                 --this->Level;
             else
-                this->Level = 3;
+                this->Level = (GLuint) this->Levels.size() - 1;
             std::cout << "Level: " << this->Level << std::endl;
             this->KeysProcessed[GLFW_KEY_S] = GL_TRUE;
         }
@@ -228,8 +229,10 @@ void Game::Render(GLuint textScale)
         Effects->EndRender();
         Effects->Render(glfwGetTime());
         // Render text (don't include in postprocessing)
-        std::stringstream ss; ss << this->Lives;
-        Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f * textScale);
+        std::stringstream lives; lives << this->Lives;
+        Text->RenderText("Lives:" + lives.str(), 5.0f, 5.0f, 1.0f * textScale);
+        std::stringstream score; score << this->Score;
+        Text->RenderText("Score:" + score.str(), this->Width - (200.0f * textScale),5.0f, 1.0f * textScale);
     }
     if (this->State == GAME_MENU)
     {
@@ -239,7 +242,9 @@ void Game::Render(GLuint textScale)
     if (this->State == GAME_WIN)
     {
         Text->RenderText("You WON!!!", 320.0f * textScale, this->Height / 2 - (20.0f * textScale), 1.0f * textScale, glm::vec3(0.0f, 1.0f, 0.0f));
-        Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f * textScale, this->Height / 2, 1.0f * textScale, glm::vec3(1.0f, 1.0f, 0.0f));
+        std::stringstream score; score << this->Score;
+        Text->RenderText("Score:" + score.str(), 320.0f * textScale, this->Height / 2, 1.0f * textScale, glm::vec3(0.0f, 1.0f, 0.0f));
+        Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f * textScale, this->Height / 2 + (20.0f * textScale), 1.0f * textScale, glm::vec3(1.0f, 1.0f, 0.0f));
     }
 }
 
@@ -253,7 +258,10 @@ void Game::ResetLevel()
         this->Levels[2].Load("levels/three.lvl", this->Width, this->Height * 0.5f);
     else if (this->Level == 3)
         this->Levels[3].Load("levels/four.lvl", this->Width, this->Height * 0.5f);
+    else if (this->Level == 4)
+    this->Levels[4].Load("levels/five.lvl", this->Width, this->Height * 0.5f);
     this->Lives = 3;
+    this->Score = 0;
 }
 
 void Game::ResetPlayer()
@@ -417,6 +425,7 @@ void Game::DoCollisions()
                 if (!box.IsSolid)
                 {
                     box.Destroyed = GL_TRUE;
+                    this->Score += 10;
                     this->SpawnPowerUps(box);
                     SoundEngine->play2D("audio/brick.wav", GL_FALSE);
                 }

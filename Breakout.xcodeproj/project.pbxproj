@@ -56,6 +56,7 @@
 		A36A09052386F5200016AE48 /* text_shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A09032386F4F70016AE48 /* text_shader.vs */; };
 		A36A09062386F5200016AE48 /* text_shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A09042386F5060016AE48 /* text_shader.frag */; };
 		A36A090A2386F6F50016AE48 /* OCRAEXT.TTF in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A09082386F6EB0016AE48 /* OCRAEXT.TTF */; };
+		A36A090D2387E17A0016AE48 /* five.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A090C2387E0FB0016AE48 /* five.lvl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +104,7 @@
 			dstPath = levels;
 			dstSubfolderSpec = 7;
 			files = (
+				A36A090D2387E17A0016AE48 /* five.lvl in CopyFiles */,
 				A36A08C02386A5580016AE48 /* two.lvl in CopyFiles */,
 				A36A08BF2386A5550016AE48 /* four.lvl in CopyFiles */,
 				A36A08BE2386A5530016AE48 /* one.lvl in CopyFiles */,
@@ -201,6 +203,7 @@
 		A36A09042386F5060016AE48 /* text_shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = text_shader.frag; sourceTree = "<group>"; };
 		A36A09082386F6EB0016AE48 /* OCRAEXT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = OCRAEXT.TTF; sourceTree = "<group>"; };
 		A36A090B238702A00016AE48 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		A36A090C2387E0FB0016AE48 /* five.lvl */ = {isa = PBXFileReference; lastKnownFileType = text; path = five.lvl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +350,7 @@
 				A36A08B42386A4F50016AE48 /* three.lvl */,
 				A36A08B52386A4F50016AE48 /* one.lvl */,
 				A36A08B62386A4F50016AE48 /* four.lvl */,
+				A36A090C2387E0FB0016AE48 /* five.lvl */,
 				A36A08B72386A4F50016AE48 /* two.lvl */,
 			);
 			name = levels;

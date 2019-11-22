@@ -54,8 +54,8 @@ GLboolean GameLevel::IsCompleted()
 void GameLevel::init(std::vector<std::vector<GLuint>> tileData, GLuint levelWidth, GLuint levelHeight)
 {
     // Calculate dimensions
-    GLuint height = tileData.size();
-    GLuint width = tileData[0].size(); // Note we can index vector at [0] since this function is only called if height > 0
+    GLuint height = (GLuint) tileData.size();
+    GLuint width = (GLuint) tileData[0].size(); // Note we can index vector at [0] since this function is only called if height > 0
     GLfloat unit_width = levelWidth / static_cast<GLfloat>(width), unit_height = levelHeight / height;
     // Initialize level tiles based on tileData
     for (GLuint y = 0; y < height; ++y)
@@ -82,7 +82,13 @@ void GameLevel::init(std::vector<std::vector<GLuint>> tileData, GLuint levelWidt
                     color = glm::vec3(0.8f, 0.8f, 0.4f);
                 else if (tileData[y][x] == 5)
                     color = glm::vec3(1.0f, 0.5f, 0.0f);
-
+                else
+                {
+                    GLfloat Rval = glm::sin(tileData[y][x]);
+                    GLfloat Gval = glm::cos(tileData[y][x]);
+                    GLfloat Bval = glm::clamp((GLfloat) tileData[y][x], 0.0f, 1.0f);
+                    color = glm::vec3(Rval, Gval, Bval);
+                }
                 glm::vec2 pos(unit_width * x, unit_height * y);
                 glm::vec2 size(unit_width, unit_height);
                 this->Bricks.push_back(GameObject(pos, size, ResourceManager::GetTexture("block"), color));
