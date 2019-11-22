@@ -176,7 +176,6 @@ void Game::ProcessInput(GLfloat dt)
         {
             
             this->Level = (this->Level + 1) % this->Levels.size();
-            std::cout << "Level: " << this->Level<< std::endl;
             this->KeysProcessed[GLFW_KEY_W] = GL_TRUE;
         }
         // See previous level
@@ -186,7 +185,6 @@ void Game::ProcessInput(GLfloat dt)
                 --this->Level;
             else
                 this->Level = (GLuint) this->Levels.size() - 1;
-            std::cout << "Level: " << this->Level << std::endl;
             this->KeysProcessed[GLFW_KEY_S] = GL_TRUE;
         }
     }

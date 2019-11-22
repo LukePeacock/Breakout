@@ -7,7 +7,19 @@ This version was made possible by [Joey De Vries' Tutorial](https://learnopengl.
 
 
 ### How to Run
-To run the program please download the repo (or just the executable) and run the executable when available (!!!!!!!this will be added later!!!!!!!). Please note that the executable has been produced for OS X only. For other operating systems, please download the repo and compile from source for your system. There are several dependencies which will need solving but I have not included the files in this repo to reduce size.
+To run the program please download the repo (or just the executable) and run the executable from within the [**Release**](Release) folder. Since the app was developed as a command line tool, you will need to execute it from the command line (Since this was for practice, I did not bundle into a single application). 
+
+To execute the app, navigate to:
+
+```
+cd ~/Breakout/Release
+```
+And then execute the program with:
+```
+./Breakout
+```
+
+Please note that the project has been produced for OS X. For other operating systems, there may be problems with executing it. In these cases please refer to the notes below and google to solve any dependency issues. Apologies for not confirming it to be cross-compatible. 
 
 
 ### Development Notes
