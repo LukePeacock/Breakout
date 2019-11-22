@@ -69,7 +69,7 @@ void Game::Init(int width, int height)
     
     // Load textures
     ResourceManager::LoadTexture("assets/background.jpg", GL_FALSE, "background");
-    ResourceManager::LoadTexture("assets/awesomeface.png", GL_TRUE, "face");
+    ResourceManager::LoadTexture("assets/ball.png", GL_TRUE, "ball");
     ResourceManager::LoadTexture("assets/block.png", GL_FALSE, "block");
     ResourceManager::LoadTexture("assets/block_solid.png", GL_FALSE, "block_solid");
     ResourceManager::LoadTexture("assets/paddle.png", true, "paddle");
@@ -105,7 +105,7 @@ void Game::Init(int width, int height)
     // Create ball
     glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
     Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY,
-        ResourceManager::GetTexture("face"));
+        ResourceManager::GetTexture("ball"));
     
     // Text renderer
     Text = new TextRenderer(this->Width, this->Height);

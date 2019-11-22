@@ -25,7 +25,6 @@
 		A36A08AF2386A42E0016AE48 /* block_solid.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08AB2386A4210016AE48 /* block_solid.png */; };
 		A36A08B02386A4330016AE48 /* block.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08AD2386A4210016AE48 /* block.png */; };
 		A36A08B12386A4350016AE48 /* background.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08AC2386A4210016AE48 /* background.jpg */; };
-		A36A08B22386A4370016AE48 /* awesomeface.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08AE2386A4210016AE48 /* awesomeface.png */; };
 		A36A08BD2386A5510016AE48 /* three.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08B42386A4F50016AE48 /* three.lvl */; };
 		A36A08BE2386A5530016AE48 /* one.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08B52386A4F50016AE48 /* one.lvl */; };
 		A36A08BF2386A5550016AE48 /* four.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A08B62386A4F50016AE48 /* four.lvl */; };
@@ -57,6 +56,7 @@
 		A36A09062386F5200016AE48 /* text_shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A09042386F5060016AE48 /* text_shader.frag */; };
 		A36A090A2386F6F50016AE48 /* OCRAEXT.TTF in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A09082386F6EB0016AE48 /* OCRAEXT.TTF */; };
 		A36A090D2387E17A0016AE48 /* five.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A090C2387E0FB0016AE48 /* five.lvl */; };
+		A36A090F2387EED10016AE48 /* ball.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = A36A090E2387EEC80016AE48 /* ball.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +83,7 @@
 			dstPath = assets;
 			dstSubfolderSpec = 7;
 			files = (
+				A36A090F2387EED10016AE48 /* ball.png in CopyFiles */,
 				A36A08DF2386D8550016AE48 /* powerup_chaos.png in CopyFiles */,
 				A36A08E02386D8550016AE48 /* powerup_confuse.png in CopyFiles */,
 				A36A08E12386D8550016AE48 /* powerup_increase.png in CopyFiles */,
@@ -91,7 +92,6 @@
 				A36A08E42386D8550016AE48 /* powerup_sticky.png in CopyFiles */,
 				A36A08CA2386B1D30016AE48 /* particle.png in CopyFiles */,
 				A36A08C22386A6B10016AE48 /* paddle.png in CopyFiles */,
-				A36A08B22386A4370016AE48 /* awesomeface.png in CopyFiles */,
 				A36A08B12386A4350016AE48 /* background.jpg in CopyFiles */,
 				A36A08B02386A4330016AE48 /* block.png in CopyFiles */,
 				A36A08AF2386A42E0016AE48 /* block_solid.png in CopyFiles */,
@@ -166,7 +166,6 @@
 		A36A08AB2386A4210016AE48 /* block_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_solid.png; sourceTree = "<group>"; };
 		A36A08AC2386A4210016AE48 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		A36A08AD2386A4210016AE48 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
-		A36A08AE2386A4210016AE48 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		A36A08B42386A4F50016AE48 /* three.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = three.lvl; sourceTree = "<group>"; };
 		A36A08B52386A4F50016AE48 /* one.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = one.lvl; sourceTree = "<group>"; };
 		A36A08B62386A4F50016AE48 /* four.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = four.lvl; sourceTree = "<group>"; };
@@ -204,6 +203,7 @@
 		A36A09082386F6EB0016AE48 /* OCRAEXT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = OCRAEXT.TTF; sourceTree = "<group>"; };
 		A36A090B238702A00016AE48 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A36A090C2387E0FB0016AE48 /* five.lvl */ = {isa = PBXFileReference; lastKnownFileType = text; path = five.lvl; sourceTree = "<group>"; };
+		A36A090E2387EEC80016AE48 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,7 +338,7 @@
 				A36A08AB2386A4210016AE48 /* block_solid.png */,
 				A36A08AC2386A4210016AE48 /* background.jpg */,
 				A36A08AD2386A4210016AE48 /* block.png */,
-				A36A08AE2386A4210016AE48 /* awesomeface.png */,
+				A36A090E2387EEC80016AE48 /* ball.png */,
 			);
 			name = assets;
 			path = src/assets;
